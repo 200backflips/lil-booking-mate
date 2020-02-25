@@ -22,7 +22,7 @@ export default {
 
 <style scoped>
 .BookingButton button {
-  width: 14rem;
+  width: 15rem;
   height: 3.2rem;
   font-size: 1.4rem;
   color: #ffffff;

@@ -5,9 +5,13 @@
         <label>email</label>
         <input type="text" />
       </div>
-      <div class="form-field">
+      <div v-if="this.isLoggedIn" class="form-field">
         <label>time period</label>
         <input type="date" />
+      </div>
+      <div v-else class="form-field">
+        <label>password</label>
+        <input type="password" />
       </div>
       <BookingButton />
     </form>
@@ -23,6 +27,11 @@ export default {
   computed: mapGetters(["allUsers"]),
   components: {
     BookingButton
+  },
+  data() {
+    return {
+      isLoggedIn: false
+    };
   }
 };
 </script>
@@ -37,25 +46,14 @@ export default {
   font-size: 1.2rem;
 }
 .form-field {
-  width: 14rem;
+  width: 15rem;
   margin-bottom: 2rem;
   padding: 0.6rem;
   background: #2b2b2b;
 }
-.form-field > input[type="text"] {
+.form-field > input {
   width: 100%;
   margin-top: 1rem;
-  font-size: 1.4rem;
-  background: #2b2b2b;
-  color: #ffffff;
-  border: none;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.4);
-  outline: none;
-}
-.form-field > input[type="date"] {
-  width: 100%;
-  margin-top: 1rem;
-  font-family: "Roboto", sans-serif;
   font-size: 1.4rem;
   background: #2b2b2b;
   color: #ffffff;
