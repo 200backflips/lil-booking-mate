@@ -1,15 +1,14 @@
 <template>
   <div class="BookingForm">
     <form class="BookingForm">
-      <label>name</label>
-      <input list="users" type="none" />
-      <datalist id="users">
-        <option value="dis guy" />
-        <option value="dat guy" />
-        <option value="other guy" />
-      </datalist>
-      <label>time period</label>
-      <input type="date" />
+      <div class="form-field">
+        <label>email</label>
+        <input type="text" />
+      </div>
+      <div class="form-field">
+        <label>time period</label>
+        <input type="date" />
+      </div>
       <BookingButton />
     </form>
   </div>
@@ -17,9 +16,11 @@
 
 <script>
 import BookingButton from "../elements/BookingButton.vue";
+import { mapGetters } from "vuex";
 
 export default {
   name: "BookingForm",
+  computed: mapGetters(["allUsers"]),
   components: {
     BookingButton
   }
@@ -30,24 +31,39 @@ export default {
 .BookingForm {
   display: flex;
   flex-direction: column;
-  flex-wrap: nowrap;
   align-items: center;
-  height: 80vh;
-  margin: 0 auto;
-  font-size: 1.5rem;
+  flex-wrap: nowrap;
+  height: 68vh;
+  font-size: 1.2rem;
 }
-.BookingForm > form label {
-  margin: 0.5rem;
+.form-field {
+  width: 14rem;
+  margin-bottom: 2rem;
+  padding: 0.6rem;
+  background: #2b2b2b;
 }
-.BookingForm > form input[list] {
-  margin: 0.5rem 0.5rem 2rem 0.5rem;
-  font-size: 1.5rem;
+.form-field > input[type="text"] {
+  width: 100%;
+  margin-top: 1rem;
+  font-size: 1.4rem;
+  background: #2b2b2b;
+  color: #ffffff;
+  border: none;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.4);
+  outline: none;
 }
-.BookingForm > form input[type="date"] {
-  margin: 0.5rem 0.5rem 2rem 0.5rem;
-  font-size: 1.5rem;
+.form-field > input[type="date"] {
+  width: 100%;
+  margin-top: 1rem;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.4rem;
+  background: #2b2b2b;
+  color: #ffffff;
+  border: none;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.4);
+  outline: none;
 }
 
-/* @media screen and (min-width: 600px) {
+/* @media screen and (min-width: 420px) {
   } */
 </style>
