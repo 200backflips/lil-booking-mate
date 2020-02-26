@@ -47,6 +47,9 @@ const actions = {
         'the email or password you have provided is incorrect. please try again'
       );
     });
+  },
+  logOut({ commit }) {
+    commit('setLogOut');
   }
   // toggleLogIn({ commit }) {
   //   state.users.map(user => {
@@ -64,6 +67,7 @@ const mutations = {
   setInputEmail: (state, input) => (state.userInput.email = input),
   setInputPassword: (state, input) => (state.userInput.password = input),
   setLogIn: state => (state.userIsLoggedIn = true),
+  setLogOut: state => (state.userIsLoggedIn = false),
   setErrorMessage: (state, message) => (state.errorMessage = message)
   // setLogIn: (state, input) =>
   //   state.users.map(user => {
