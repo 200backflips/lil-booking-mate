@@ -1,22 +1,22 @@
 <template>
-  <div class="BookingForm">
-    <DatePicker />
-    <Button class="main-btn" buttonText="book" :clickHandler="toggleLogIn" />
-  </div>
+  <form class="Login">
+    <FormField labelName="email" inputType="text" :capture="captureEmail" />
+    <FormField labelName="password" inputType="password" :capture="capturePassword" />
+    <Button buttonText="login" class="main-btn" :clickHandler="toggleLogIn" />
+  </form>
 </template>
 
 <script>
 import Button from "../elements/Button";
-import DatePicker from "./DatePicker";
-import { mapGetters, mapActions } from "vuex";
+import FormField from "../elements/FormField";
+import { mapActions } from "vuex";
 
 export default {
-  name: "BookingForm",
+  name: "Login",
   components: {
     Button,
-    DatePicker
+    FormField
   },
-  computed: mapGetters(["isLoggedIn"]),
   methods: {
     ...mapActions(["captureEmail", "capturePassword", "toggleLogIn"])
   }
@@ -24,8 +24,9 @@ export default {
 </script>
 
 <style scoped>
-.BookingForm {
+.Login {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }

@@ -1,6 +1,6 @@
 <template>
-  <div class="Button">
-    <button v-on:click.prevent="clickHandler">{{ buttonText }}</button>
+  <div :class="className">
+    <button @click.prevent="clickHandler">{{ buttonText }}</button>
   </div>
 </template>
 
@@ -8,6 +8,7 @@
 export default {
   name: "Button",
   props: {
+    className: String,
     buttonText: String,
     clickHandler: Function
   }
@@ -15,7 +16,7 @@ export default {
 </script>
 
 <style scoped>
-.Button button {
+button {
   width: 15rem;
   height: 3.2rem;
   font-size: 1.4rem;
@@ -27,7 +28,7 @@ export default {
 }
 
 @media screen and (min-width: 420px) {
-  .Button button:hover {
+  button:hover {
     color: #c2c2c2;
     cursor: pointer;
   }

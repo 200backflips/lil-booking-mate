@@ -1,21 +1,21 @@
 const state = {
-  userIsLoggedIn: false,
   users: [
     {
       email: 'test@test.com',
       password: 'secret',
-      hasBooking: false
+      timePeriod: ''
     },
     {
       email: 'gitte@test.com',
       password: 'secret',
-      hasBooking: false
+      timePeriod: ''
     }
   ],
   userInput: {
     email: '',
     password: ''
-  }
+  },
+  userIsLoggedIn: false
 };
 
 const getters = {
@@ -36,9 +36,7 @@ const actions = {
         state.userInput.email === user.email &&
         state.userInput.password === user.password
       ) {
-        console.log(state.userIsLoggedIn);
         commit('setLogIn');
-        console.log(state.userIsLoggedIn);
       }
     });
   }

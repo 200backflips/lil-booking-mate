@@ -1,12 +1,7 @@
 <template>
   <div class="form-field">
     <label>{{ labelName }}</label>
-    <input
-      v-bind:type="inputType"
-      v-model="userInput"
-      v-on:input="capture(userInput)"
-      autocomplete="on"
-    />
+    <input :type="inputType" v-model="userInput" :input="capture(userInput)" autocomplete="on" />
   </div>
 </template>
 
@@ -42,5 +37,12 @@ export default {
   border: none;
   border-bottom: 2px solid rgba(255, 255, 255, 0.4);
   outline: none;
+}
+.form-field > input:-webkit-autofill,
+.form-field > input:-webkit-autofill:hover,
+.form-field > input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #ffffff;
+  box-shadow: 0 0 0 1000px #2b2b2b inset;
+  font-size: 1.1rem;
 }
 </style>
