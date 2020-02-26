@@ -1,7 +1,7 @@
 <template>
   <div class="BookingForm">
     <DatePicker />
-    <Button class="main-btn" buttonText="book" :clickHandler="toggleLogIn" />
+    <Button class="main-btn" buttonText="book" :clickHandler="verifyLogIn" />
   </div>
 </template>
 
@@ -18,7 +18,7 @@ export default {
   },
   computed: mapGetters(["isLoggedIn"]),
   methods: {
-    ...mapActions(["captureEmail", "capturePassword", "toggleLogIn"])
+    ...mapActions(["captureEmail", "capturePassword", "verifyLogIn"])
   }
 };
 </script>

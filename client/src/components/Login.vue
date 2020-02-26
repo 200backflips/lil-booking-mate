@@ -2,14 +2,17 @@
   <form class="Login">
     <FormField labelName="email" inputType="text" :capture="captureEmail" />
     <FormField labelName="password" inputType="password" :capture="capturePassword" />
-    <Button buttonText="login" class="main-btn" :clickHandler="toggleLogIn" />
+    <div class="error-message">
+      <p>{{errorMessage}}</p>
+    </div>
+    <Button buttonText="login" class="main-btn" :clickHandler="verifyLogIn" />
   </form>
 </template>
 
 <script>
 import Button from "../elements/Button";
 import FormField from "../elements/FormField";
-import { mapActions } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "Login",
@@ -17,8 +20,9 @@ export default {
     Button,
     FormField
   },
+  computed: mapGetters(["errorMessage"]),
   methods: {
-    ...mapActions(["captureEmail", "capturePassword", "toggleLogIn"])
+    ...mapActions(["captureEmail", "capturePassword", "verifyLogIn"])
   }
 };
 </script>
@@ -27,8 +31,13 @@ export default {
 .Login {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+}
+
+.error-message {
+  width: 70%;
+  text-align: center;
+  font-style: italic;
 }
 
 .main-btn {

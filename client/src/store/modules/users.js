@@ -15,22 +15,26 @@ const state = {
     email: '',
     password: ''
   },
-  userIsLoggedIn: false
+  userIsLoggedIn: false,
+  errorMessage: ''
 };
 
 const getters = {
   allUsers: state => state.users,
-  isLoggedIn: state => state.userIsLoggedIn
+  isLoggedIn: state => state.userIsLoggedIn,
+  errorMessage: state => state.errorMessage
 };
 
 const actions = {
   captureEmail({ commit }, input) {
+    commit('setErrorMessage', '');
     commit('setInputEmail', input);
   },
   capturePassword({ commit }, input) {
+    commit('setErrorMessage', '');
     commit('setInputPassword', input);
   },
-  toggleLogIn({ commit }) {
+  verifyLogIn({ commit }) {
     state.users.map(user => {
       if (
         state.userInput.email === user.email &&
@@ -38,6 +42,10 @@ const actions = {
       ) {
         commit('setLogIn');
       }
+      commit(
+        'setErrorMessage',
+        'the email or password you have provided is incorrect. please try again'
+      );
     });
   }
   // toggleLogIn({ commit }) {
@@ -55,7 +63,8 @@ const actions = {
 const mutations = {
   setInputEmail: (state, input) => (state.userInput.email = input),
   setInputPassword: (state, input) => (state.userInput.password = input),
-  setLogIn: state => (state.userIsLoggedIn = true)
+  setLogIn: state => (state.userIsLoggedIn = true),
+  setErrorMessage: (state, message) => (state.errorMessage = message)
   // setLogIn: (state, input) =>
   //   state.users.map(user => {
   //     if (user.email === input.email) {

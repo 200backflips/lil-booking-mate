@@ -23,7 +23,7 @@ export default {
 
 <style scoped>
 .form-field {
-  width: 90%;
+  width: 15rem;
   margin-bottom: 2rem;
   padding: 0.6rem;
   background: #2b2b2b;
