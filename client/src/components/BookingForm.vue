@@ -1,37 +1,28 @@
 <template>
   <div class="BookingForm">
     <form class="BookingForm">
-      <div class="form-field">
-        <label>email</label>
-        <input type="text" />
-      </div>
-      <div v-if="this.isLoggedIn" class="form-field">
-        <label>time period</label>
-        <input type="date" />
-      </div>
-      <div v-else class="form-field">
-        <label>password</label>
-        <input type="password" />
-      </div>
-      <BookingButton />
+      <FormField labelName="email" inputType="text" v-bind:capture="captureEmail" />
+      <FormField labelName="password" inputType="password" v-bind:capture="capturePassword" />
+      <Button v-if="isLoggedIn" buttonText="book" v-bind:clickHandler="toggleLogIn" />
+      <Button v-else buttonText="login" v-bind:clickHandler="toggleLogIn" />
     </form>
   </div>
 </template>
 
 <script>
-import BookingButton from "../elements/BookingButton.vue";
-import { mapGetters } from "vuex";
+import Button from "../elements/Button.vue";
+import FormField from "../elements/FormField.vue";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "BookingForm",
-  computed: mapGetters(["allUsers"]),
   components: {
-    BookingButton
+    Button,
+    FormField
   },
-  data() {
-    return {
-      isLoggedIn: false
-    };
+  computed: mapGetters(["isLoggedIn"]),
+  methods: {
+    ...mapActions(["captureEmail", "capturePassword", "toggleLogIn"])
   }
 };
 </script>
@@ -42,26 +33,7 @@ export default {
   flex-direction: column;
   align-items: center;
   flex-wrap: nowrap;
-  height: 68vh;
-  font-size: 1.2rem;
+  height: 65%;
+  font-size: 1rem;
 }
-.form-field {
-  width: 15rem;
-  margin-bottom: 2rem;
-  padding: 0.6rem;
-  background: #2b2b2b;
-}
-.form-field > input {
-  width: 100%;
-  margin-top: 1rem;
-  font-size: 1.4rem;
-  background: #2b2b2b;
-  color: #ffffff;
-  border: none;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.4);
-  outline: none;
-}
-
-/* @media screen and (min-width: 420px) {
-  } */
 </style>

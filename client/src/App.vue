@@ -1,8 +1,10 @@
 <template>
   <div class="App" id="app">
-    <Header />
-    <router-view />
-    <Footer />
+    <div class="content">
+      <Header />
+      <router-view />
+      <Footer />
+    </div>
   </div>
 </template>
 
@@ -39,17 +41,23 @@ body {
   align-items: center;
   height: 100vh;
   width: 100vw;
-  margin: 0 auto;
-  color: #ffffff;
   background: #1f1f1f;
+  color: #ffffff;
+}
+.content {
+  height: 100vh;
+  width: 100vw;
 }
 
-/* @media screen and (min-width: 420px) {
-  .content {
-    margin-top: 4rem;
-    height: 85vh;
-    width: 600px;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+@media screen and (min-width: 420px) {
+  .App {
+    justify-content: center;
   }
-} */
+  .content {
+    height: 650px;
+    width: 600px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 5px 5px 25px rgba(0, 0, 0, 0.2);
+  }
+}
 </style>

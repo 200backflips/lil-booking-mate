@@ -19,14 +19,20 @@ export default {
 .Footer {
   display: flex;
   justify-content: center;
+  align-items: center;
   background: #2f2fff;
-  width: 100vw;
-  padding: 0.5rem;
+  height: 15%;
 }
 img {
   width: 2rem;
-  height: 10vh;
+  height: 2rem;
   margin: 0 1.2rem 0 1.2rem;
   filter: invert(100%);
+}
+
+@media screen and (min-width: 420px) {
+  img:hover {
+    filter: invert(60%);
+  }
 }
 </style>
