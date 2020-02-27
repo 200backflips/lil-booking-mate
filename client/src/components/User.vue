@@ -23,7 +23,7 @@
         @click.prevent="toggleUserInfo('password')"
         class="password-text"
       >password: ••••••</button>
-      <p>{{ userInfo.timePeriod === '' ? 'you have no dates booked currently' : `booked: ${userInfo.timePeriod}`}}</p>
+      <p>{{ userInfo.timePeriod === '' ? 'you have no dates booked currently' : `active booking: ${userInfo.timePeriod}`}}</p>
     </form>
   </div>
 </template>
