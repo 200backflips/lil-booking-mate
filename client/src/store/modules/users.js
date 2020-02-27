@@ -17,9 +17,14 @@ const state = {
   },
   userIsLoggedIn: false,
   errorMessage: '',
-  userInfo: {},
+  userInfo: {
+    email: '',
+    password: '',
+    timePeriod: ''
+  },
   changeEmail: false,
-  changePassword: false
+  changePassword: false,
+  datePicked: ''
 };
 
 const getters = {
@@ -96,11 +101,27 @@ const actions = {
     );
   },
   pickDate({ commit }, date) {
+    commit('setPickDate', date);
+  },
+  bookDate({ commit }) {
+    if (state.datePicked !== '') {
+      let date = state.datePicked;
+      state.users.map(user => {
+        if (user.email === state.userInfo.email) {
+          user.timePeriod = date;
+          commit('setBookDate', user);
+          user.timePeriod = date.toString().match(regexDate)[0];
+          commit('captureUserInfo', user);
+        }
+      });
+    }
+  },
+  cancelBooking({ commit }) {
+    commit('setPickDate', '');
     state.users.map(user => {
       if (user.email === state.userInfo.email) {
-        user.timePeriod = date;
-        commit('setDate', user);
-        user.timePeriod = date.toString().match(regexDate)[0];
+        user.timePeriod = '';
+        commit('setBookDate', user);
         commit('captureUserInfo', user);
       }
     });
@@ -117,7 +138,8 @@ const mutations = {
   toggleEmail: state => (state.changeEmail = !state.changeEmail),
   togglePassword: state => (state.changePassword = !state.changePassword),
   setUserDetails: (state, update) => (state = { ...state, update }),
-  setDate: (state, date) => (state = { ...state, date })
+  setPickDate: (state, date) => (state.datePicked = date),
+  setBookDate: (state, date) => (state = { ...state, date })
 };
 
 export default {

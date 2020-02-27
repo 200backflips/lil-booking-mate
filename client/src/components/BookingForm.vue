@@ -2,7 +2,14 @@
   <div class="BookingForm">
     <p>choose a date to book to and from</p>
     <DatePicker />
-    <Button class="main-btn" buttonText="book" :clickHandler="verifyLogIn" />
+    <template v-if="userInfo.timePeriod === ''">
+      <Button class="main-btn" buttonText="book" :clickHandler="bookDate" />
+      <p>you have no dates booked currently</p>
+    </template>
+    <template v-else>
+      <Button class="main-btn" buttonText="cancel" :clickHandler="cancelBooking" />
+      <p>you have booked {{ userInfo.timePeriod }}</p>
+    </template>
   </div>
 </template>
 
@@ -17,9 +24,9 @@ export default {
     Button,
     DatePicker
   },
-  computed: mapGetters(["isLoggedIn"]),
+  computed: mapGetters(["userInfo"]),
   methods: {
-    ...mapActions(["captureEmail", "capturePassword", "verifyLogIn"])
+    ...mapActions(["bookDate", "cancelBooking"])
   }
 };
 </script>
@@ -30,11 +37,12 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
   overflow: auto;
   font-size: 1.2rem;
 }
 .BookingForm > p {
-  margin-bottom: 1rem;
+  margin: 1rem;
 }
 
 .main-btn {
