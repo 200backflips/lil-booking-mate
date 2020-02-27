@@ -26,7 +26,7 @@ export default {
   flex-direction: column;
   align-items: center;
   flex-wrap: nowrap;
-  height: 67%;
+  height: 75%;
   margin: 0 auto;
   font-size: 1rem;
 }

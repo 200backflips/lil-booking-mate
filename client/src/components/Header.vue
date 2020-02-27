@@ -2,7 +2,9 @@
   <div class="Header">
     <div class="logout-btn">
       <button @click.prevent="logOut">
-        <img src="../assets/logout.svg" alt="logout" />
+        <router-link to="/">
+          <img src="../assets/logout.svg" alt="logout" />
+        </router-link>
       </button>
     </div>
     <h1>lil booking mate</h1>
@@ -24,7 +26,7 @@ export default {
 .Header {
   display: flex;
   flex-direction: column;
-  height: 20%;
+  height: 12%;
   color: rgba(255, 255, 255, 0.8);
 }
 .Header > h1 {
@@ -47,5 +49,11 @@ export default {
 img {
   width: 1.5rem;
   filter: invert(100%);
+}
+
+@media screen and (min-width: 420px) {
+  img:hover {
+    filter: invert(60%);
+  }
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="form-field">
     <label>{{ labelName }}</label>
-    <input :type="inputType" v-model="userInput" :input="capture(userInput)" autocomplete="on" />
+    <input :type="inputType" v-model="userInput" :input="capture(userInput)" />
   </div>
 </template>
 

@@ -16,13 +16,19 @@ const state = {
     password: ''
   },
   userIsLoggedIn: false,
-  errorMessage: ''
+  errorMessage: '',
+  userInfo: {},
+  changeEmail: false,
+  changePassword: false
 };
 
 const getters = {
   allUsers: state => state.users,
   isLoggedIn: state => state.userIsLoggedIn,
-  errorMessage: state => state.errorMessage
+  errorMessage: state => state.errorMessage,
+  userInfo: state => state.userInfo,
+  changeEmail: state => state.changeEmail,
+  changePassword: state => state.changePassword
 };
 
 const actions = {
@@ -40,6 +46,7 @@ const actions = {
         state.userInput.email === user.email &&
         state.userInput.password === user.password
       ) {
+        commit('captureUserInfo', user);
         commit('setLogIn');
       }
       commit(
@@ -50,17 +57,32 @@ const actions = {
   },
   logOut({ commit }) {
     commit('setLogOut');
+  },
+  toggleUserInfo({ commit }, value) {
+    if (value === 'email') {
+      commit('toggleEmail');
+    } else if (value === 'password') {
+      commit('togglePassword');
+    }
+  },
+  updateEmail({ commit }) {
+    state.users.map(user => {
+      if (user.email === state.userInfo.email) {
+        user.email = state.userInput.email;
+        commit('setUserDetails', user.email);
+      }
+    });
+    commit('toggleEmail');
+  },
+  updatePassword({ commit }) {
+    state.users.map(user => {
+      if (user.password === state.userInfo.password) {
+        user.password = state.userInput.password;
+        commit('setUserDetails', user.password);
+      }
+    });
+    commit('togglePassword');
   }
-  // toggleLogIn({ commit }) {
-  //   state.users.map(user => {
-  //     if (
-  //       state.userInput.email === user.email &&
-  //       state.userInput.password === user.password
-  //     ) {
-  //       commit('setLogIn', user);
-  //     }
-  //   });
-  // }
 };
 
 const mutations = {
@@ -68,14 +90,11 @@ const mutations = {
   setInputPassword: (state, input) => (state.userInput.password = input),
   setLogIn: state => (state.userIsLoggedIn = true),
   setLogOut: state => (state.userIsLoggedIn = false),
-  setErrorMessage: (state, message) => (state.errorMessage = message)
-  // setLogIn: (state, input) =>
-  //   state.users.map(user => {
-  //     if (user.email === input.email) {
-  //       user.isLoggedIn = !user.isLoggedIn;
-  //       state = { ...state, user };
-  //     }
-  //   })
+  setErrorMessage: (state, message) => (state.errorMessage = message),
+  captureUserInfo: (state, user) => (state.userInfo = user),
+  toggleEmail: state => (state.changeEmail = !state.changeEmail),
+  togglePassword: state => (state.changePassword = !state.changePassword),
+  setUserDetails: (state, update) => (state = { ...state, update })
 };
 
 export default {

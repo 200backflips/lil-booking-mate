@@ -1,5 +1,6 @@
 <template>
   <div class="BookingForm">
+    <p>choose a date to book to and from</p>
     <DatePicker />
     <Button class="main-btn" buttonText="book" :clickHandler="verifyLogIn" />
   </div>
@@ -26,8 +27,14 @@ export default {
 <style scoped>
 .BookingForm {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow: auto;
+  font-size: 1.2rem;
+}
+.BookingForm > p {
+  margin-bottom: 1rem;
 }
 
 .main-btn {

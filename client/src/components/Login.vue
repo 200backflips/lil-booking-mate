@@ -1,5 +1,5 @@
 <template>
-  <form class="Login">
+  <form class="Login" autocomplete="on">
     <FormField labelName="email" inputType="text" :capture="captureEmail" />
     <FormField labelName="password" inputType="password" :capture="capturePassword" />
     <div class="error-message">
@@ -31,7 +31,9 @@ export default {
 .Login {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
+  margin-top: 4rem;
 }
 
 .error-message {
