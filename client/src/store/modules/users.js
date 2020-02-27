@@ -31,6 +31,9 @@ const getters = {
   changePassword: state => state.changePassword
 };
 
+const regexEmail = /^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/;
+const regexDate = /^[a-z ]+[\d ]{7}/i;
+
 const actions = {
   captureEmail({ commit }, input) {
     commit('setErrorMessage', '');
@@ -66,22 +69,41 @@ const actions = {
     }
   },
   updateEmail({ commit }) {
-    state.users.map(user => {
-      if (user.email === state.userInfo.email) {
-        user.email = state.userInput.email;
-        commit('setUserDetails', user.email);
-      }
-    });
-    commit('toggleEmail');
+    if (regexEmail.test(state.userInput.email)) {
+      state.users.map(user => {
+        if (user.email === state.userInfo.email) {
+          user.email = state.userInput.email;
+          commit('setUserDetails', user.email);
+        }
+      });
+      commit('toggleEmail');
+    }
+    commit('setErrorMessage', 'you have entered an invalid email');
   },
   updatePassword({ commit }) {
+    if (state.userInput.password.length > 3) {
+      state.users.map(user => {
+        if (user.password === state.userInfo.password) {
+          user.password = state.userInput.password;
+          commit('setUserDetails', user.password);
+        }
+      });
+      commit('togglePassword');
+    }
+    commit(
+      'setErrorMessage',
+      'your password has to be at least 3 characters long'
+    );
+  },
+  pickDate({ commit }, date) {
     state.users.map(user => {
-      if (user.password === state.userInfo.password) {
-        user.password = state.userInput.password;
-        commit('setUserDetails', user.password);
+      if (user.email === state.userInfo.email) {
+        user.timePeriod = date;
+        commit('setDate', user);
+        user.timePeriod = date.toString().match(regexDate)[0];
+        commit('captureUserInfo', user);
       }
     });
-    commit('togglePassword');
   }
 };
 
@@ -94,7 +116,8 @@ const mutations = {
   captureUserInfo: (state, user) => (state.userInfo = user),
   toggleEmail: state => (state.changeEmail = !state.changeEmail),
   togglePassword: state => (state.changePassword = !state.changePassword),
-  setUserDetails: (state, update) => (state = { ...state, update })
+  setUserDetails: (state, update) => (state = { ...state, update }),
+  setDate: (state, date) => (state = { ...state, date })
 };
 
 export default {

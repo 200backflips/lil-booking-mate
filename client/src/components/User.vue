@@ -6,18 +6,24 @@
       <template v-if="changeEmail">
         <FormField labelName="email" inputType="text" :capture="captureEmail" />
         <Button buttonText="update" class="update-btn" :clickHandler="updateEmail" />
+        <div class="error-message">
+          <p>{{errorMessage}}</p>
+        </div>
       </template>
       <button v-else @click.prevent="toggleUserInfo('email')">email: {{ userInfo.email }}</button>
       <template v-if="changePassword">
         <FormField labelName="password" inputType="password" :capture="capturePassword" />
         <Button buttonText="update" class="update-btn" :clickHandler="updatePassword" />
+        <div class="error-message">
+          <p>{{errorMessage}}</p>
+        </div>
       </template>
       <button
         v-else
         @click.prevent="toggleUserInfo('password')"
         class="password-text"
       >password: ••••••</button>
-      <p>{{ userInfo.timePeriod.length > 1 ? `booked: ${userInfo.timePeriod}` : 'you have no dates booked currently' }}</p>
+      <p>{{ userInfo.timePeriod === '' ? 'you have no dates booked currently' : `booked: ${userInfo.timePeriod}`}}</p>
     </form>
   </div>
 </template>
@@ -33,7 +39,12 @@ export default {
     FormField,
     Button
   },
-  computed: mapGetters(["userInfo", "changeEmail", "changePassword"]),
+  computed: mapGetters([
+    "userInfo",
+    "changeEmail",
+    "changePassword",
+    "errorMessage"
+  ]),
   methods: {
     ...mapActions([
       "toggleUserInfo",
@@ -72,6 +83,8 @@ img {
   padding: 0.7rem;
   font-size: 1.2rem;
   color: #ffffff;
+  background: #1f1f1f;
+  border: none;
 }
 .user-details > p {
   margin: 0.8rem;
@@ -80,5 +93,11 @@ img {
 
 .update-btn {
   margin: -1rem 0 2rem 0;
+}
+
+.error-message {
+  width: 70%;
+  text-align: center;
+  font-style: italic;
 }
 </style>
