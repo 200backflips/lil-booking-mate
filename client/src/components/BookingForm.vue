@@ -2,13 +2,13 @@
   <div class="BookingForm">
     <p>choose a date to book to and from</p>
     <DatePicker />
-    <template v-if="userInfo.timePeriod === ''">
-      <Button class="main-btn" buttonText="book" :clickHandler="bookDate" />
+    <template v-if="userInfo.timePeriod.from === '' && userInfo.timePeriod.to === ''">
+      <Button class="main-btn" buttonText="book" :clickHandler="bookDates" />
       <p>you have no dates booked currently</p>
     </template>
     <template v-else>
       <Button class="main-btn" buttonText="cancel" :clickHandler="cancelBooking" />
-      <p>you have booked {{ userInfo.timePeriod }}</p>
+      <p>you have booked {{ userInfo.timePeriod.from }} to {{ userInfo.timePeriod.to }}</p>
     </template>
   </div>
 </template>
@@ -26,33 +26,29 @@ export default {
   },
   computed: mapGetters(["userInfo"]),
   methods: {
-    ...mapActions(["bookDate", "cancelBooking"])
+    ...mapActions(["bookDates", "cancelBooking"])
   }
 };
 </script>
 
 <style scoped>
 .BookingForm {
+  position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   width: 100%;
+  height: 100%;
   overflow: auto;
   font-size: 1.2rem;
 }
 .BookingForm > p {
   margin: 1rem;
+  text-align: center;
 }
 
 .main-btn {
-  position: fixed;
-  top: 74%;
-}
-
-@media screen and (min-width: 420px) {
-  .main-btn {
-    top: 69%;
-  }
+  position: absolute;
+  top: 84%;
 }
 </style>

@@ -24,13 +24,14 @@ export default {
 
 <style scoped>
 .Header {
+  position: relative;
   display: flex;
   flex-direction: column;
   height: 12%;
   color: rgba(255, 255, 255, 0.8);
 }
 .Header > h1 {
-  position: fixed;
+  position: absolute;
   padding: 1rem;
   align-self: center;
   font-size: 1.8rem;

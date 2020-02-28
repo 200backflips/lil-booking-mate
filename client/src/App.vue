@@ -38,6 +38,7 @@ body {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
+  justify-content: center;
   align-items: center;
   height: 100vh;
   width: 100vw;
@@ -45,8 +46,8 @@ body {
   color: #ffffff;
 }
 .content {
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
 }
 
 @media screen and (min-width: 420px) {

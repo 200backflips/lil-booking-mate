@@ -23,7 +23,14 @@
         @click.prevent="toggleUserInfo('password')"
         class="password-text"
       >password: ••••••</button>
-      <p>{{ userInfo.timePeriod === '' ? 'you have no dates booked currently' : `active booking: ${userInfo.timePeriod}`}}</p>
+      <p
+        v-if="userInfo.timePeriod.from === '' && userInfo.timePeriod.to === '' "
+      >you have no dates booked currently</p>
+      <template v-else>
+        <p>active booking</p>
+        <p>from: {{ userInfo.timePeriod.from }}</p>
+        <p>to: {{ userInfo.timePeriod.to }}</p>
+      </template>
     </form>
   </div>
 </template>
@@ -87,7 +94,7 @@ img {
   border: none;
 }
 .user-details > p {
-  margin: 0.8rem;
+  margin: 0.6rem;
   text-align: center;
 }
 

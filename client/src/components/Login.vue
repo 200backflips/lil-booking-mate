@@ -29,11 +29,13 @@ export default {
 
 <style scoped>
 .Login {
+  position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   margin-top: 4rem;
+  width: 100%;
+  height: 100%;
 }
 
 .error-message {
@@ -43,13 +45,7 @@ export default {
 }
 
 .main-btn {
-  position: fixed;
-  top: 74%;
-}
-
-@media screen and (min-width: 420px) {
-  .main-btn {
-    top: 69%;
-  }
+  position: absolute;
+  top: 82%;
 }
 </style>

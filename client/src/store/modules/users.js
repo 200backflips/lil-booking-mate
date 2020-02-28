@@ -3,12 +3,12 @@ const state = {
     {
       email: 'test@test.com',
       password: 'secret',
-      timePeriod: ''
+      timePeriod: { from: '', to: '' }
     },
     {
       email: 'gitte@test.com',
       password: 'secret',
-      timePeriod: ''
+      timePeriod: { from: '', to: '' }
     }
   ],
   userInput: {
@@ -20,11 +20,11 @@ const state = {
   userInfo: {
     email: '',
     password: '',
-    timePeriod: ''
+    timePeriod: { from: '', to: '' }
   },
   changeEmail: false,
   changePassword: false,
-  datePicked: ''
+  datesPicked: { from: '', to: '' }
 };
 
 const getters = {
@@ -33,7 +33,8 @@ const getters = {
   errorMessage: state => state.errorMessage,
   userInfo: state => state.userInfo,
   changeEmail: state => state.changeEmail,
-  changePassword: state => state.changePassword
+  changePassword: state => state.changePassword,
+  datesPicked: state => state.datesPicked
 };
 
 const regexEmail = /^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/;
@@ -100,29 +101,38 @@ const actions = {
       'your password has to be at least 3 characters long'
     );
   },
-  pickDate({ commit }, date) {
-    commit('setPickDate', date);
+  pickDates({ commit }, date) {
+    if (state.datesPicked.from === '' && state.datesPicked.to === '') {
+      commit('setFromDate', date);
+    } else {
+      commit('setToDate', date);
+    }
   },
-  bookDate({ commit }) {
-    if (state.datePicked !== '') {
-      let date = state.datePicked;
+  bookDates({ commit }) {
+    if (state.datesPicked.from && state.datesPicked.to) {
+      let dateFrom = state.datesPicked.from;
+      let dateTo = state.datesPicked.to;
       state.users.map(user => {
         if (user.email === state.userInfo.email) {
-          user.timePeriod = date;
-          commit('setBookDate', user);
-          user.timePeriod = date.toString().match(regexDate)[0];
+          user.timePeriod.from = dateFrom;
+          user.timePeriod.to = dateTo;
+          commit('setBookDates', user);
+          user.timePeriod.from = dateFrom.toString().match(regexDate)[0];
+          user.timePeriod.to = dateTo.toString().match(regexDate)[0];
           commit('captureUserInfo', user);
         }
       });
     }
   },
   cancelBooking({ commit }) {
-    commit('setPickDate', '');
+    commit('setFromDate', '');
+    commit('setToDate', '');
     state.users.map(user => {
       if (user.email === state.userInfo.email) {
-        user.timePeriod = '';
-        commit('setBookDate', user);
+        user.timePeriod = { from: '', to: '' };
+        commit('setBookDates', user);
         commit('captureUserInfo', user);
+        console.log(state.users);
       }
     });
   }
@@ -138,8 +148,9 @@ const mutations = {
   toggleEmail: state => (state.changeEmail = !state.changeEmail),
   togglePassword: state => (state.changePassword = !state.changePassword),
   setUserDetails: (state, update) => (state = { ...state, update }),
-  setPickDate: (state, date) => (state.datePicked = date),
-  setBookDate: (state, date) => (state = { ...state, date })
+  setFromDate: (state, date) => (state.datesPicked.from = date),
+  setToDate: (state, date) => (state.datesPicked.to = date),
+  setBookDates: (state, date) => (state = { ...state, date })
 };
 
 export default {

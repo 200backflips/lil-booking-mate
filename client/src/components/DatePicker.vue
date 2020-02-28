@@ -4,7 +4,9 @@
     :inline="true"
     :language="sv"
     :monday-first="true"
-    @selected="pickDate"
+    :highlighted="highlighted"
+    @selected="pickDates"
+    :key="datesPicked"
     class="datepicker"
   />
 </template>
@@ -12,21 +14,31 @@
 <script>
 import datepicker from "vuejs-datepicker";
 import { sv } from "vuejs-datepicker/dist/locale";
-import { mapActions } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "DatePicker",
   components: {
     datepicker
   },
+  computed: mapGetters(["datesPicked"]),
   data() {
     return {
       date: new Date(),
-      sv: sv
+      sv: sv,
+      highlighted: {}
     };
   },
+  mounted() {
+    if (this.fromDate && this.toDate) {
+      this.highlighted = {
+        from: this.datesPicked.from,
+        to: this.datesPicked.to
+      };
+    }
+  },
   methods: {
-    ...mapActions(["pickDate"])
+    ...mapActions(["pickDates"])
   }
 };
 </script>
