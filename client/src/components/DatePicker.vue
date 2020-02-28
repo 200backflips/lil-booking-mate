@@ -6,7 +6,6 @@
     :monday-first="true"
     :highlighted="highlighted"
     @selected="pickDates"
-    :key="datesPicked"
     class="datepicker"
   />
 </template>
@@ -26,11 +25,11 @@ export default {
     return {
       date: new Date(),
       sv: sv,
-      highlighted: {}
+      highlighted: { from: "", to: "" }
     };
   },
   mounted() {
-    if (this.fromDate && this.toDate) {
+    if (this.datesPicked.from && this.datesPicked.to) {
       this.highlighted = {
         from: this.datesPicked.from,
         to: this.datesPicked.to

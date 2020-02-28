@@ -132,7 +132,6 @@ const actions = {
         user.timePeriod = { from: '', to: '' };
         commit('setBookDates', user);
         commit('captureUserInfo', user);
-        console.log(state.users);
       }
     });
   }
