@@ -8,6 +8,7 @@
       :captureInfo="captureEmail"
       :updateInfo="updateEmail"
       :userInfo="userInfo.email"
+      :error="errorMessage"
     />
     <DisplayUserInfo
       infoType="password"
@@ -15,6 +16,7 @@
       :captureInfo="capturePassword"
       :updateInfo="updatePassword"
       :userInfo="userInfo.password"
+      :error="errorMessage"
     />
     <p
       v-if="userInfo.timePeriod.from === '' && userInfo.timePeriod.to === '' "

@@ -1,164 +1,21 @@
-const state = {
-  users: [
-    {
-      email: 'test@test.com',
-      password: 'secret',
-      timePeriod: { from: '', to: '' }
-    },
-    {
-      email: 'gitte@test.com',
-      password: 'secret',
-      timePeriod: { from: '', to: '' }
-    }
-  ],
-  userInput: {
-    email: '',
-    password: ''
-  },
-  userIsLoggedIn: false,
-  errorMessage: '',
-  userInfo: {
-    email: '',
-    password: '',
+const state = [
+  {
+    email: 'test@test.com',
+    password: 'secret',
     timePeriod: { from: '', to: '' }
   },
-  changeEmail: false,
-  changePassword: false,
-  datesPicked: { from: '', to: '' },
-  picker: 'from'
-};
+  {
+    email: 'gitte@test.com',
+    password: 'secret',
+    timePeriod: { from: '', to: '' }
+  }
+];
 
 const getters = {
-  allUsers: state => state.users,
-  isLoggedIn: state => state.userIsLoggedIn,
-  errorMessage: state => state.errorMessage,
-  userInfo: state => state.userInfo,
-  changeEmail: state => state.changeEmail,
-  changePassword: state => state.changePassword,
-  fromDate: state => state.datesPicked.from,
-  toDate: state => state.datesPicked.to
-};
-
-const regexEmail = /^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/;
-const regexDate = /^[a-z ]+[\d ]{7}/i;
-
-const actions = {
-  captureEmail({ commit }, input) {
-    commit('setErrorMessage', '');
-    commit('setInputEmail', input);
-  },
-  capturePassword({ commit }, input) {
-    commit('setErrorMessage', '');
-    commit('setInputPassword', input);
-  },
-  verifyLogIn({ commit }) {
-    state.users.map(user => {
-      if (
-        state.userInput.email === user.email &&
-        state.userInput.password === user.password
-      ) {
-        commit('captureUserInfo', user);
-        commit('setLogIn');
-      }
-      commit(
-        'setErrorMessage',
-        'the email or password you have provided is incorrect. please try again'
-      );
-    });
-  },
-  logOut({ commit }) {
-    commit('setLogOut');
-  },
-  toggleUserInfo({ commit }, value) {
-    if (value === 'email') {
-      commit('toggleEmail');
-    } else if (value === 'password') {
-      commit('togglePassword');
-    }
-  },
-  updateEmail({ commit }) {
-    if (regexEmail.test(state.userInput.email)) {
-      state.users.map(user => {
-        if (user.email === state.userInfo.email) {
-          user.email = state.userInput.email;
-          commit('setUserDetails', user.email);
-        }
-      });
-      commit('toggleEmail');
-    }
-    commit('setErrorMessage', 'you have entered an invalid email');
-  },
-  updatePassword({ commit }) {
-    if (state.userInput.password.length > 3) {
-      state.users.map(user => {
-        if (user.password === state.userInfo.password) {
-          user.password = state.userInput.password;
-          commit('setUserDetails', user.password);
-        }
-      });
-      commit('togglePassword');
-    }
-    commit(
-      'setErrorMessage',
-      'your password has to be at least 3 characters long'
-    );
-  },
-  pickDates({ commit }, date) {
-    if (state.picker === 'from') {
-      commit('setFromDate', date);
-      state.picker = 'to';
-    } else {
-      commit('setToDate', date);
-      state.picker = 'from';
-    }
-  },
-  bookDates({ commit }) {
-    if (state.datesPicked.from && state.datesPicked.to) {
-      let dateFrom = state.datesPicked.from;
-      let dateTo = state.datesPicked.to;
-      state.users.map(user => {
-        if (user.email === state.userInfo.email) {
-          user.timePeriod.from = dateFrom;
-          user.timePeriod.to = dateTo;
-          commit('setDates', user);
-          user.timePeriod.from = dateFrom.toString().match(regexDate)[0];
-          user.timePeriod.to = dateTo.toString().match(regexDate)[0];
-          commit('captureUserInfo', user);
-        }
-      });
-    }
-  },
-  cancelBooking({ commit }) {
-    commit('setFromDate', '');
-    commit('setToDate', '');
-    state.users.map(user => {
-      if (user.email === state.userInfo.email) {
-        user.timePeriod = { from: '', to: '' };
-        commit('setDates', user);
-        commit('captureUserInfo', user);
-      }
-    });
-  }
-};
-
-const mutations = {
-  setInputEmail: (state, input) => (state.userInput.email = input),
-  setInputPassword: (state, input) => (state.userInput.password = input),
-  setLogIn: state => (state.userIsLoggedIn = true),
-  setLogOut: state => (state.userIsLoggedIn = false),
-  setErrorMessage: (state, message) => (state.errorMessage = message),
-  captureUserInfo: (state, user) => (state.userInfo = user),
-  toggleEmail: state => (state.changeEmail = !state.changeEmail),
-  togglePassword: state => (state.changePassword = !state.changePassword),
-  setUserDetails: (state, update) => (state = { ...state, update }),
-  setFromDate: (state, date) => (state.datesPicked.from = date),
-  setToDate: (state, date) => (state.datesPicked.to = date),
-  setDates: (state, date) => (state = { ...state, date })
+  allUsers: state => state
 };
 
 export default {
   state,
-  getters,
-  actions,
-  mutations
+  getters
 };

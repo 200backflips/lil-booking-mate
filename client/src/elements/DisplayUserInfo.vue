@@ -5,11 +5,15 @@
         <img src="../assets/cancel.svg" alt="close" />
       </button>
       <form autocomplete="off">
-        <FormField :labelName="infoType" inputType="text" :capture="captureInfo" />
+        <FormField
+          :labelName="infoType"
+          :inputType="infoType === 'password' ? 'password' : 'text'"
+          :capture="captureInfo"
+        />
         <Button buttonText="update" class="update-btn" :clickHandler="updateInfo" />
       </form>
       <div class="error-message">
-        <p>{{errorMessage}}</p>
+        <p>{{error}}</p>
       </div>
     </template>
     <button
@@ -21,7 +25,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import { mapActions } from "vuex";
 import FormField from "../elements/FormField";
 import Button from "../elements/Button";
 
@@ -32,13 +36,13 @@ export default {
     toggler: Boolean,
     captureInfo: Function,
     updateInfo: Function,
-    userInfo: String
+    userInfo: String,
+    error: String
   },
   components: {
     FormField,
     Button
   },
-  computed: mapGetters(["errorMessage"]),
   methods: {
     ...mapActions(["toggleUserInfo"])
   }
@@ -62,12 +66,14 @@ export default {
   background: #1f1f1f;
   outline: none;
   border: none;
+  cursor: pointer;
 }
 
 .close {
-  align-self: flex-end;
-  margin: 0.5rem 4rem 0.5rem 0.5rem;
+  margin: 0.5rem 0.5rem 0.5rem 14rem;
   width: 1.8rem;
+  background: #1f1f1f;
+  border: none;
   outline: none;
 }
 .close > img {

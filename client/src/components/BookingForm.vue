@@ -1,6 +1,6 @@
 <template>
   <div class="BookingForm">
-    <p>choose a date to book to and from</p>
+    <p>{{ picker ? 'choose a date to book from' : 'choose a date to book to' }}</p>
     <DatePicker />
     <template v-if="userInfo.timePeriod.from === '' && userInfo.timePeriod.to === ''">
       <Button class="main-btn" buttonText="book" :clickHandler="bookDates" />
@@ -24,7 +24,7 @@ export default {
     Button,
     DatePicker
   },
-  computed: mapGetters(["userInfo"]),
+  computed: mapGetters(["userInfo", "picker"]),
   methods: {
     ...mapActions(["bookDates", "cancelBooking"])
   }
@@ -43,7 +43,7 @@ export default {
   font-size: 1.2rem;
 }
 .BookingForm > p {
-  margin: 1rem;
+  margin: 1.2rem;
   text-align: center;
 }
 
