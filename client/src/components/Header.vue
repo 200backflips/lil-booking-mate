@@ -27,7 +27,7 @@ export default {
   position: relative;
   display: flex;
   flex-direction: column;
-  height: 12%;
+  height: 10%;
   color: rgba(255, 255, 255, 0.8);
 }
 .Header > h1 {

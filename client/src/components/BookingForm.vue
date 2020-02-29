@@ -43,12 +43,12 @@ export default {
   font-size: 1.2rem;
 }
 .BookingForm > p {
-  margin: 1.2rem;
+  margin: 1rem;
   text-align: center;
 }
 
 .main-btn {
   position: absolute;
-  top: 84%;
+  top: 85%;
 }
 </style>

@@ -30,8 +30,11 @@ export default {
   box-sizing: border-box;
 }
 
+html,
 body {
   font-family: "Roboto", sans-serif;
+  width: 100%;
+  height: 100%;
 }
 
 .App {
@@ -40,20 +43,17 @@ body {
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  width: 100vw;
+  width: 100%;
+  height: 100%;
   background: #1f1f1f;
   color: #ffffff;
 }
 .content {
-  height: 100%;
   width: 100%;
+  height: 100%;
 }
 
 @media screen and (min-width: 420px) {
-  .App {
-    justify-content: center;
-  }
   .content {
     height: 650px;
     width: 600px;

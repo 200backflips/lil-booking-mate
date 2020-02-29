@@ -34,7 +34,7 @@ export default {
   justify-content: center;
   align-items: center;
   background: #2f2fff;
-  height: 13%;
+  height: 10%;
 }
 
 img {

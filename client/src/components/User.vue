@@ -60,7 +60,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 75%;
+  height: 80%;
   overflow: auto;
 }
 .User > p {

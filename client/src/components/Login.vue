@@ -46,6 +46,6 @@ export default {
 
 .main-btn {
   position: absolute;
-  top: 82%;
+  top: 83%;
 }
 </style>
