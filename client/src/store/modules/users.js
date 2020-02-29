@@ -104,6 +104,10 @@ const actions = {
   pickDates({ commit }, date) {
     if (state.datesPicked.from === '' && state.datesPicked.to === '') {
       commit('setFromDate', date);
+    } else if (date < state.datesPicked.from) {
+      commit('setFromDate', date);
+    } else if (date > state.datesPicked.from && date <= state.datesPicked.to) {
+      commit('setFromDate', date);
     } else {
       commit('setToDate', date);
     }
