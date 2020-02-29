@@ -20,7 +20,7 @@ export default {
   components: {
     datepicker
   },
-  computed: mapGetters(["datesPicked"]),
+  computed: mapGetters(["fromDate", "toDate"]),
   data() {
     return {
       date: new Date(),
@@ -29,15 +29,23 @@ export default {
     };
   },
   mounted() {
-    if (this.datesPicked.from && this.datesPicked.to) {
+    if (this.fromDate && this.toDate) {
       this.highlighted = {
-        from: this.datesPicked.from,
-        to: this.datesPicked.to
+        from: this.fromDate,
+        to: this.toDate
       };
     }
   },
   methods: {
     ...mapActions(["pickDates"])
+  },
+  watch: {
+    fromDate(newDate) {
+      this.highlighted.from = newDate;
+    },
+    toDate(newDate) {
+      this.highlighted.to = newDate;
+    }
   }
 };
 </script>

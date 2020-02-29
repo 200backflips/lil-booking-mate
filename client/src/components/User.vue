@@ -1,56 +1,40 @@
 <template>
   <div class="User">
     <img src="../assets/user.svg" alt="user" />
-    <form class="user-details" autocomplete="off">
-      <p>click any of the information that you wish to update</p>
-      <template v-if="changeEmail">
-        <button class="close" @click.prevent="toggleUserInfo('email')">
-          <img src="../assets/cancel.svg" alt="close" />
-        </button>
-        <FormField labelName="email" inputType="text" :capture="captureEmail" />
-        <Button buttonText="update" class="update-btn" :clickHandler="updateEmail" />
-        <div class="error-message">
-          <p>{{errorMessage}}</p>
-        </div>
-      </template>
-      <button
-        v-else
-        @click.prevent="toggleUserInfo('email')"
-        class="text-btn"
-      >email: {{ userInfo.email }}</button>
-      <template v-if="changePassword">
-        <button class="close" @click.prevent="toggleUserInfo('password')">
-          <img src="../assets/cancel.svg" alt="close" />
-        </button>
-        <FormField labelName="password" inputType="password" :capture="capturePassword" />
-        <Button buttonText="update" class="update-btn" :clickHandler="updatePassword" />
-        <div class="error-message">
-          <p>{{errorMessage}}</p>
-        </div>
-      </template>
-      <button v-else @click.prevent="toggleUserInfo('password')" class="text-btn">password: ••••••</button>
-      <p
-        v-if="userInfo.timePeriod.from === '' && userInfo.timePeriod.to === '' "
-      >you have no dates booked currently</p>
-      <template v-else>
-        <p>active booking</p>
-        <p>from: {{ userInfo.timePeriod.from }}</p>
-        <p>to: {{ userInfo.timePeriod.to }}</p>
-      </template>
-    </form>
+    <p>click any of the information that you wish to update</p>
+    <DisplayUserInfo
+      infoType="email"
+      :toggler="changeEmail"
+      :captureInfo="captureEmail"
+      :updateInfo="updateEmail"
+      :userInfo="userInfo.email"
+    />
+    <DisplayUserInfo
+      infoType="password"
+      :toggler="changePassword"
+      :captureInfo="capturePassword"
+      :updateInfo="updatePassword"
+      :userInfo="userInfo.password"
+    />
+    <p
+      v-if="userInfo.timePeriod.from === '' && userInfo.timePeriod.to === '' "
+    >you have no dates booked currently</p>
+    <template v-else>
+      <p>active booking</p>
+      <p>from: {{ userInfo.timePeriod.from }}</p>
+      <p>to: {{ userInfo.timePeriod.to }}</p>
+    </template>
   </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from "vuex";
-import FormField from "../elements/FormField";
-import Button from "../elements/Button";
+import DisplayUserInfo from "../elements/DisplayUserInfo";
 
 export default {
   name: "User",
   components: {
-    FormField,
-    Button
+    DisplayUserInfo
   },
   computed: mapGetters([
     "userInfo",
@@ -60,7 +44,6 @@ export default {
   ]),
   methods: {
     ...mapActions([
-      "toggleUserInfo",
       "captureEmail",
       "capturePassword",
       "updateEmail",
@@ -78,49 +61,16 @@ export default {
   height: 75%;
   overflow: auto;
 }
+.User > p {
+  margin: 0.5rem;
+  text-align: center;
+  font-size: 1.2rem;
+  width: 80%;
+}
 
 img {
   width: 4rem;
   filter: invert(100%);
   margin: 1rem;
-}
-.user-details {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 1.2rem;
-}
-.text-btn {
-  width: 14rem;
-  margin: 0.8rem;
-  padding: 0.7rem;
-  font-size: 1.2rem;
-  color: #ffffff;
-  background: #1f1f1f;
-  outline: none;
-  border: none;
-}
-.user-details > p {
-  margin: 0.6rem;
-  text-align: center;
-}
-
-.close {
-  align-self: flex-end;
-  margin-right: 3rem;
-}
-.close > img {
-  filter: invert(100%);
-  width: 2rem;
-}
-
-.update-btn {
-  margin: -1rem 0 2rem 0;
-}
-
-.error-message {
-  width: 70%;
-  text-align: center;
-  font-style: italic;
 }
 </style>

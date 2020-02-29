@@ -24,7 +24,8 @@ const state = {
   },
   changeEmail: false,
   changePassword: false,
-  datesPicked: { from: '', to: '' }
+  datesPicked: { from: '', to: '' },
+  picker: 'from'
 };
 
 const getters = {
@@ -34,7 +35,8 @@ const getters = {
   userInfo: state => state.userInfo,
   changeEmail: state => state.changeEmail,
   changePassword: state => state.changePassword,
-  datesPicked: state => state.datesPicked
+  fromDate: state => state.datesPicked.from,
+  toDate: state => state.datesPicked.to
 };
 
 const regexEmail = /^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/;
@@ -102,14 +104,12 @@ const actions = {
     );
   },
   pickDates({ commit }, date) {
-    if (state.datesPicked.from === '' && state.datesPicked.to === '') {
+    if (state.picker === 'from') {
       commit('setFromDate', date);
-    } else if (date < state.datesPicked.from) {
-      commit('setFromDate', date);
-    } else if (date > state.datesPicked.from && date <= state.datesPicked.to) {
-      commit('setFromDate', date);
+      state.picker = 'to';
     } else {
       commit('setToDate', date);
+      state.picker = 'from';
     }
   },
   bookDates({ commit }) {
@@ -120,7 +120,7 @@ const actions = {
         if (user.email === state.userInfo.email) {
           user.timePeriod.from = dateFrom;
           user.timePeriod.to = dateTo;
-          commit('setBookDates', user);
+          commit('setDates', user);
           user.timePeriod.from = dateFrom.toString().match(regexDate)[0];
           user.timePeriod.to = dateTo.toString().match(regexDate)[0];
           commit('captureUserInfo', user);
@@ -134,7 +134,7 @@ const actions = {
     state.users.map(user => {
       if (user.email === state.userInfo.email) {
         user.timePeriod = { from: '', to: '' };
-        commit('setBookDates', user);
+        commit('setDates', user);
         commit('captureUserInfo', user);
       }
     });
@@ -153,7 +153,7 @@ const mutations = {
   setUserDetails: (state, update) => (state = { ...state, update }),
   setFromDate: (state, date) => (state.datesPicked.from = date),
   setToDate: (state, date) => (state.datesPicked.to = date),
-  setBookDates: (state, date) => (state = { ...state, date })
+  setDates: (state, date) => (state = { ...state, date })
 };
 
 export default {
