@@ -6,7 +6,6 @@
     :monday-first="true"
     :highlighted="highlighted"
     @selected="pickDates"
-    class="datepicker"
   />
 </template>
 
@@ -51,7 +50,11 @@ export default {
 </script>
 
 <style>
-.datepicker {
-  color: #000000;
+.vdp-datepicker > .vdp-datepicker__calendar {
+  background: #2b2b2b;
+  border: none;
+  padding: 0;
+  /* font-size: 1rem; */
+  /* border: 1px solid rgba(255, 255, 255, 0.4); */
 }
 </style>

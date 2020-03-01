@@ -29,7 +29,6 @@ export default {
 
 <style scoped>
 .Login {
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -45,7 +44,6 @@ export default {
 }
 
 .main-btn {
-  position: absolute;
-  top: 83%;
+  margin: 2rem;
 }
 </style>

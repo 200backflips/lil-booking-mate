@@ -33,7 +33,6 @@ export default {
 
 <style scoped>
 .BookingForm {
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -48,7 +47,6 @@ export default {
 }
 
 .main-btn {
-  position: absolute;
-  top: 85%;
+  margin-top: 1rem;
 }
 </style>

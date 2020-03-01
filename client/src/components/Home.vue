@@ -29,5 +29,6 @@ export default {
   height: 80%;
   margin: 0 auto;
   font-size: 1rem;
+  overflow: auto;
 }
 </style>

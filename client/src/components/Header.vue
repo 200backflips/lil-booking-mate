@@ -1,5 +1,6 @@
 <template>
   <div class="Header">
+    <h1>lil booking mate</h1>
     <div class="logout-btn">
       <button @click.prevent="logOut">
         <router-link to="/">
@@ -7,7 +8,6 @@
         </router-link>
       </button>
     </div>
-    <h1>lil booking mate</h1>
   </div>
 </template>
 
@@ -24,22 +24,20 @@ export default {
 
 <style scoped>
 .Header {
-  position: relative;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   height: 10%;
   color: rgba(255, 255, 255, 0.8);
 }
 .Header > h1 {
-  position: absolute;
-  padding: 1rem;
-  align-self: center;
   font-size: 1.8rem;
 }
 
 .logout-btn {
-  margin: 1rem;
-  align-self: flex-end;
+  margin-left: 2rem;
 }
 .logout-btn > button {
   border: none;
