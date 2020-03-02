@@ -75,6 +75,7 @@ export default {
   background: #1f1f1f;
   border: none;
   outline: none;
+  cursor: pointer;
 }
 .close > img {
   filter: invert(100%);

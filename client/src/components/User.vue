@@ -60,14 +60,14 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 80%;
+  height: 82%;
   overflow: auto;
 }
 .User > p {
   margin: 0.5rem;
   text-align: center;
-  font-size: 1.2rem;
-  width: 80%;
+  font-size: 1rem;
+  width: 82%;
 }
 
 img {

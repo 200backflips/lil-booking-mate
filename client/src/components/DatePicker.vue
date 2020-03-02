@@ -54,7 +54,5 @@ export default {
   background: #2b2b2b;
   border: none;
   padding: 0;
-  /* font-size: 1rem; */
-  /* border: 1px solid rgba(255, 255, 255, 0.4); */
 }
 </style>

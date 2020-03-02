@@ -3,7 +3,9 @@
     <router-link to="/">
       <img src="../assets/home.svg" alt="home" />
     </router-link>
+    <!-- <router-link to="/bookings"> -->
     <img src="../assets/newsfeed.svg" class="logged-out" alt="booked-dates" />
+    <!-- </router-link> -->
     <img src="../assets/telegram.svg" class="logged-out" alt="message" />
     <router-link to="/user">
       <img src="../assets/user.svg" alt="user" />
@@ -34,11 +36,11 @@ export default {
   justify-content: center;
   align-items: center;
   background: #2f2fff;
-  height: 10%;
+  height: 8%;
 }
 
 img {
-  width: 1.9rem;
+  width: 1.7rem;
   margin: 0 1.2rem 0 1.2rem;
   filter: invert(100%);
 }

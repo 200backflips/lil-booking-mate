@@ -1,5 +1,17 @@
 const regexDate = /^[a-z ]+[\d ]{7}/i;
 
+const state = {
+  hasActiveBooking: false,
+  showModal: false,
+  bookingIsCancelled: false
+};
+
+const getters = {
+  showModal: state => state.showModal,
+  hasActiveBooking: state => state.hasActiveBooking,
+  bookingIsCancelled: state => state.bookingIsCancelled
+};
+
 const actions = {
   bookDates(context) {
     const commit = context.commit;
@@ -15,6 +27,9 @@ const actions = {
           user.timePeriod.from = dateFrom.toString().match(regexDate)[0];
           user.timePeriod.to = dateTo.toString().match(regexDate)[0];
           commit('captureUserInfo', user);
+          commit('setActiveBooking');
+          commit('setModal');
+          setTimeout(() => commit('setModal'), 4000);
         }
       });
     }
@@ -29,13 +44,20 @@ const actions = {
         user.timePeriod = { from: '', to: '' };
         commit('setDates', user);
         commit('captureUserInfo', user);
+        commit('setActiveBooking');
+        commit('setCancelled');
+        commit('setModal');
+        setTimeout(() => commit('setModal'), 4000);
       }
     });
   }
 };
 
 const mutations = {
-  setDates: (state, date) => (state = { ...state, date })
+  setDates: (state, date) => (state = { ...state, date }),
+  setModal: state => (state.showModal = !state.showModal),
+  setCancelled: state => (state.bookingIsCancelled = !state.bookingIsCancelled),
+  setActiveBooking: state => (state.hasActiveBooking = !state.hasActiveBooking)
 };
 
-export default { actions, mutations };
+export default { state, getters, actions, mutations };

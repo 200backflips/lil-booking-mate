@@ -17,8 +17,8 @@ export default {
 
 <style scoped>
 button {
-  width: 15rem;
-  height: 3.2rem;
+  width: 14.8rem;
+  height: 3rem;
   font-size: 1.4rem;
   color: #ffffff;
   background: #2f2fff;
