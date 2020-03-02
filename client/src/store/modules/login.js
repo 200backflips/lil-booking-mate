@@ -1,3 +1,5 @@
+const regexDate = /^[a-z ]+[\d ]{7}/i;
+
 const state = { isLoggedIn: false };
 
 const getters = {
@@ -13,6 +15,14 @@ const actions = {
         state.userInput.email === user.email &&
         state.userInput.password === user.password
       ) {
+        if (user.hasActiveBooking) {
+          user.timePeriod.from = user.timePeriod.from
+            .toString()
+            .match(regexDate)[0];
+          user.timePeriod.to = user.timePeriod.to
+            .toString()
+            .match(regexDate)[0];
+        }
         commit('captureUserInfo', user);
         commit('setLogIn');
       }

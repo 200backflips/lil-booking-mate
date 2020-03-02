@@ -21,6 +21,8 @@ const actions = {
       let dateTo = state.dates.to;
       state.users.map(user => {
         if (user.email === state.userInfo.info.email) {
+          user.hasActiveBooking = !user.hasActiveBooking;
+          commit('setUser', user);
           user.timePeriod.from = dateFrom;
           user.timePeriod.to = dateTo;
           commit('setDates', user);
@@ -41,6 +43,8 @@ const actions = {
     commit('setToDate', '');
     state.users.map(user => {
       if (user.email === state.userInfo.info.email) {
+        user.hasActiveBooking = !user.hasActiveBooking;
+        commit('setUser', user);
         user.timePeriod = { from: '', to: '' };
         commit('setDates', user);
         commit('captureUserInfo', user);
