@@ -1,29 +1,34 @@
 <template>
   <div class="ActiveBookings">
-    <div v-for="user in allUsers" :key="user.email" class="user">
-      <p>{{ user.email === userInfo.email ? 'you' : user.email }}</p>
-      <template v-if="user.hasActiveBooking">
-        <p>active booking:</p>
-        <p>from: {{ parseDate(user.timePeriod.from) }}</p>
-        <p>to: {{ parseDate(user.timePeriod.to) }}</p>
-      </template>
-      <p v-else>no active bookings</p>
-    </div>
+    <Booking v-for="user in currentUser" :key="user.email" :user="user" :showCurrentUser="true" />
+    <Booking v-for="user in bookings" :key="user.email" :user="user" :showCurrentUser="false" />
   </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
+import Booking from "../elements/Booking";
 
 export default {
   name: "ActiveBookings",
-  components: {},
-  computed: mapGetters(["allUsers", "userInfo"]),
-  methods: {
-    parseDate(date) {
-      return date.toString().match(/^[a-z ]+[\d ]{7}/i)[0];
-    }
-  }
+  components: {
+    Booking
+  },
+  data() {
+    return {
+      bookings: [],
+      currentUser: []
+    };
+  },
+  mounted() {
+    this.bookings = this.allUsers.filter(
+      user => user.email !== this.userInfo.email
+    );
+    this.currentUser = this.allUsers.filter(
+      user => user.email === this.userInfo.email
+    );
+  },
+  computed: mapGetters(["allUsers", "userInfo"])
 };
 </script>
 

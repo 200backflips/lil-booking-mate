@@ -34,6 +34,8 @@ const actions = {
   },
   logOut({ commit }) {
     commit('setLogOut');
+    commit('setFromDate', '');
+    commit('setToDate', '');
   }
 };
 
