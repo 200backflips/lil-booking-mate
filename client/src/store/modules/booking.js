@@ -49,7 +49,7 @@ const actions = {
   },
   showModal({ commit }) {
     commit('setModal');
-    setTimeout(() => commit('setModal'), 4000);
+    setTimeout(() => commit('setModal'), 3000);
   }
 };
 
