@@ -22,6 +22,7 @@ const actions = {
           commit('setUser', user);
           user.timePeriod.from = dateFrom;
           user.timePeriod.to = dateTo;
+          console.log(dateTo - dateFrom);
           commit('setDates', user);
           user.timePeriod.from = dateFrom.toString().match(regexDate)[0];
           user.timePeriod.to = dateTo.toString().match(regexDate)[0];
