@@ -36,11 +36,12 @@ export default {
   justify-content: center;
   align-items: center;
   background: #2f2fff;
-  height: 8%;
+  height: 10%;
+  min-height: 45px;
 }
 
 img {
-  width: 1.7rem;
+  width: 2rem;
   margin: 0 1.2rem 0 1.2rem;
   filter: invert(100%);
 }
@@ -49,7 +50,7 @@ img {
   filter: invert(60%);
 }
 
-@media screen and (min-width: 420px) {
+@media screen and (min-width: 500px) {
   img:hover {
     filter: invert(60%);
   }

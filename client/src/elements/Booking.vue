@@ -37,6 +37,7 @@ export default {
   margin: 0.5rem;
   padding: 0.5rem;
   background: #2b2b2b;
+  font-size: 1.2rem;
 }
 .booking-details p {
   padding: 0.5rem;

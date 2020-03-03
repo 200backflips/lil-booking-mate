@@ -35,6 +35,7 @@ body {
   font-family: "Roboto", sans-serif;
   width: 100%;
   height: 100%;
+  background: #1f1f1f;
 }
 
 .App {
@@ -45,7 +46,6 @@ body {
   align-items: center;
   width: 100%;
   height: 100%;
-  background: #1f1f1f;
   color: #ffffff;
 }
 .content {
@@ -53,12 +53,17 @@ body {
   height: 100%;
 }
 
-@media screen and (min-width: 420px) {
+@media screen and (min-width: 500px) {
   .content {
-    height: 650px;
-    width: 600px;
+    width: calc(100vw / 1.25);
+    margin: 3rem 0 3rem 0;
     border: 2px solid rgba(255, 255, 255, 0.2);
     box-shadow: 10px 5px 25px rgba(0, 0, 0, 0.2);
+  }
+}
+@media screen and (min-width: 680px) {
+  .content {
+    width: 545px;
   }
 }
 </style>

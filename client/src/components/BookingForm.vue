@@ -73,7 +73,7 @@ export default {
   padding: 1rem;
   background: #3c3c3c;
   border-radius: 10px;
-  box-shadow: 15px 10px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 12px 7px 20px rgba(0, 0, 0, 0.2);
   transition: ease-in 1.5s;
 }
 .modal > h4 {

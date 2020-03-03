@@ -55,6 +55,7 @@ export default {
   flex-direction: column;
   align-items: center;
   width: 100%;
+  font-size: 1rem;
 }
 
 .text-btn {

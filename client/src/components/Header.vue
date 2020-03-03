@@ -29,11 +29,12 @@ export default {
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 10%;
+  height: 8%;
+  min-height: 45px;
   color: rgba(255, 255, 255, 0.8);
 }
 .Header > h1 {
-  font-size: 1.5rem;
+  font-size: 1.9rem;
 }
 
 .logout-btn {
@@ -46,11 +47,11 @@ export default {
 }
 
 img {
-  width: 1.5rem;
+  width: 1.8rem;
   filter: invert(100%);
 }
 
-@media screen and (min-width: 420px) {
+@media screen and (min-width: 500px) {
   img:hover {
     filter: invert(60%);
   }
