@@ -40,7 +40,7 @@ export default {
   width: 100%;
   height: 82%;
   overflow: auto;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
 
 .user {
