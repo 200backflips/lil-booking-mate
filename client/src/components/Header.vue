@@ -30,7 +30,6 @@ export default {
   align-items: center;
   width: 100%;
   height: 8%;
-  min-height: 45px;
   color: rgba(255, 255, 255, 0.8);
 }
 .Header > h1 {
@@ -54,6 +53,10 @@ img {
 @media screen and (min-width: 500px) {
   img:hover {
     filter: invert(60%);
+  }
+
+  .Header {
+    min-height: 45px;
   }
 }
 </style>

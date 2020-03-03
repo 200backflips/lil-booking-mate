@@ -2,8 +2,7 @@ const regexDate = /^[a-z ]+[\d ]{7}/i;
 
 const state = {
   hasActiveBooking: false,
-  showModal: false,
-  bookingIsCancelled: false
+  showModal: false
 };
 
 const getters = {
@@ -13,14 +12,12 @@ const getters = {
 };
 
 const actions = {
-  bookDates(context) {
-    const commit = context.commit;
-    const state = context.rootState;
-    if (state.dates.from && state.dates.to) {
-      let dateFrom = state.dates.from;
-      let dateTo = state.dates.to;
-      state.users.map(user => {
-        if (user.email === state.userInfo.info.email) {
+  bookDates({ dispatch, commit, rootState }) {
+    if (rootState.dates.from && rootState.dates.to) {
+      let dateFrom = rootState.dates.from;
+      let dateTo = rootState.dates.to;
+      rootState.users.map(user => {
+        if (user.email === rootState.userInfo.info.email) {
           user.hasActiveBooking = !user.hasActiveBooking;
           commit('setUser', user);
           user.timePeriod.from = dateFrom;
@@ -30,37 +27,35 @@ const actions = {
           user.timePeriod.to = dateTo.toString().match(regexDate)[0];
           commit('captureUserInfo', user);
           commit('setActiveBooking');
-          commit('setModal');
-          setTimeout(() => commit('setModal'), 4000);
+          dispatch('showModal');
         }
       });
     }
   },
-  cancelBooking(context) {
-    const commit = context.commit;
-    const state = context.rootState;
+  cancelBooking({ dispatch, commit, rootState }) {
     commit('setFromDate', '');
     commit('setToDate', '');
-    state.users.map(user => {
-      if (user.email === state.userInfo.info.email) {
+    rootState.users.map(user => {
+      if (user.email === rootState.userInfo.info.email) {
         user.hasActiveBooking = !user.hasActiveBooking;
         commit('setUser', user);
         user.timePeriod = { from: '', to: '' };
         commit('setDates', user);
         commit('captureUserInfo', user);
         commit('setActiveBooking');
-        commit('setCancelled');
-        commit('setModal');
-        setTimeout(() => commit('setModal'), 4000);
+        dispatch('showModal');
       }
     });
+  },
+  showModal({ commit }) {
+    commit('setModal');
+    setTimeout(() => commit('setModal'), 4000);
   }
 };
 
 const mutations = {
   setDates: (state, date) => (state = { ...state, date }),
   setModal: state => (state.showModal = !state.showModal),
-  setCancelled: state => (state.bookingIsCancelled = !state.bookingIsCancelled),
   setActiveBooking: state => (state.hasActiveBooking = !state.hasActiveBooking)
 };
 

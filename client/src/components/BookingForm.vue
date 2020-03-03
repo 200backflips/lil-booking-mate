@@ -5,40 +5,28 @@
     <DatePicker />
     <template v-if="hasActiveBooking">
       <Button class="main-btn" buttonText="cancel" :clickHandler="cancelBooking" />
-      <div :class="showModal ? 'modal show' : 'modal'">
-        <h4>booking successful!</h4>
-        <p>active booking</p>
-        <p>from: {{ userInfo.timePeriod.from }}</p>
-        <p>to: {{ userInfo.timePeriod.to }}</p>
-      </div>
     </template>
     <template v-else>
       <Button class="main-btn" buttonText="book" :clickHandler="bookDates" />
-      <div :class="showModal ? 'modal show' : 'modal'">
-        <p>your booking has been cancelled</p>
-      </div>
     </template>
+    <Modal />
   </div>
 </template>
 
 <script>
 import Button from "../elements/Button";
 import DatePicker from "./DatePicker";
+import Modal from "../elements/Modal";
 import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "BookingForm",
   components: {
     Button,
-    DatePicker
+    DatePicker,
+    Modal
   },
-  computed: mapGetters([
-    "userInfo",
-    "picker",
-    "showModal",
-    "hasActiveBooking",
-    "bookingIsCancelled"
-  ]),
+  computed: mapGetters(["userInfo", "picker", "showModal", "hasActiveBooking"]),
   methods: {
     ...mapActions(["bookDates", "cancelBooking"])
   }

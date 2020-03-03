@@ -7,13 +7,11 @@ const getters = {
 };
 
 const actions = {
-  verifyLogIn(context) {
-    const commit = context.commit;
-    const state = context.rootState;
-    state.users.map(user => {
+  verifyLogIn({ commit, rootState }) {
+    rootState.users.map(user => {
       if (
-        state.userInput.email === user.email &&
-        state.userInput.password === user.password
+        rootState.userInput.email === user.email &&
+        rootState.userInput.password === user.password
       ) {
         if (user.hasActiveBooking) {
           user.timePeriod.from = user.timePeriod.from

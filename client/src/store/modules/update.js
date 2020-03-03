@@ -18,13 +18,11 @@ const actions = {
       commit('togglePassword');
     }
   },
-  updateEmail(context) {
-    const commit = context.commit;
-    const state = context.rootState;
-    if (regexEmail.test(state.userInput.email)) {
-      state.users.map(user => {
-        if (user.email === state.userInfo.info.email) {
-          user.email = state.userInput.email;
+  updateEmail({ commit, rootState }) {
+    if (regexEmail.test(rootState.userInput.email)) {
+      rootState.users.map(user => {
+        if (user.email === rootState.userInfo.info.email) {
+          user.email = rootState.userInput.email;
           commit('setUserDetails', user.email);
           commit('captureUserInfo', user);
         }
@@ -33,13 +31,11 @@ const actions = {
     }
     commit('setErrorMessage', 'you have entered an invalid email');
   },
-  updatePassword(context) {
-    const commit = context.commit;
-    const state = context.rootState;
-    if (state.userInput.password.length > 3) {
-      state.users.map(user => {
-        if (user.password === state.userInfo.info.password) {
-          user.password = state.userInput.password;
+  updatePassword({ commit, rootState }) {
+    if (rootState.userInput.password.length > 3) {
+      rootState.users.map(user => {
+        if (user.password === rootState.userInfo.info.password) {
+          user.password = rootState.userInput.password;
           commit('setUserDetails', user.password);
           commit('captureUserInfo', user);
         }

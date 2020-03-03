@@ -37,7 +37,6 @@ export default {
   align-items: center;
   background: #2f2fff;
   height: 10%;
-  min-height: 45px;
 }
 
 img {
@@ -53,6 +52,10 @@ img {
 @media screen and (min-width: 500px) {
   img:hover {
     filter: invert(60%);
+  }
+
+  .Footer {
+    min-height: 45px;
   }
 }
 </style>
