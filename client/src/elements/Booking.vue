@@ -31,12 +31,12 @@ export default {
 .Booking {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   width: 80%;
   margin: 0.5rem;
-  padding: 0.5rem;
+  padding: 1rem;
   background: #2b2b2b;
+  font-size: 1.1rem;
 }
 .booking-details p {
   padding: 0.5rem;
