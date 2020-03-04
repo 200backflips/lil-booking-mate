@@ -49,7 +49,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .DisplayUserInfo {
   display: flex;
   flex-direction: column;

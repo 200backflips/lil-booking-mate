@@ -11,13 +11,15 @@ const getters = {
 };
 
 const actions = {
-  pickDates({ commit }, date) {
-    if (state.picker) {
-      commit('setFromDate', date);
-      commit('setPicker');
-    } else {
-      commit('setToDate', date);
-      commit('setPicker');
+  pickDates({ commit, rootState }, date) {
+    if (!rootState.userInfo.info.hasActiveBooking) {
+      if (state.picker) {
+        commit('setFromDate', date);
+        commit('setPicker');
+      } else {
+        commit('setToDate', date);
+        commit('setPicker');
+      }
     }
   }
 };

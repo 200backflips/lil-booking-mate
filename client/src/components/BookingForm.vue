@@ -26,6 +26,11 @@ export default {
     DatePicker,
     Modal
   },
+  data() {
+    return {
+      activeBooking: false
+    };
+  },
   computed: mapGetters(["userInfo", "picker", "showModal", "hasActiveBooking"]),
   methods: {
     ...mapActions(["bookDates", "cancelBooking"])

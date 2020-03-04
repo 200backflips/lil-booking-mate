@@ -18,14 +18,12 @@
       :userInfo="userInfo.password"
       :error="errorMessage"
     />
-    <p
-      v-if="userInfo.timePeriod.from === '' && userInfo.timePeriod.to === '' "
-    >you have no dates booked currently</p>
-    <template v-else>
+    <template v-if="hasActiveBooking">
       <p>active booking</p>
-      <p>from: {{ userInfo.timePeriod.from }}</p>
-      <p>to: {{ userInfo.timePeriod.to }}</p>
+      <p>from: {{ parseDate(userInfo.timePeriod.from) }}</p>
+      <p>to: {{ parseDate(userInfo.timePeriod.to) }}</p>
     </template>
+    <p v-else>you have no dates booked currently</p>
   </div>
 </template>
 
@@ -40,6 +38,7 @@ export default {
   },
   computed: mapGetters([
     "userInfo",
+    "hasActiveBooking",
     "changeEmail",
     "changePassword",
     "errorMessage"
@@ -50,7 +49,10 @@ export default {
       "capturePassword",
       "updateEmail",
       "updatePassword"
-    ])
+    ]),
+    parseDate(date) {
+      return date.toString().match(/^[a-z ]+[\d ]{7}/i)[0];
+    }
   }
 };
 </script>

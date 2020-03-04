@@ -1,13 +1,9 @@
-const regexDate = /^[a-z ]+[\d ]{7}/i;
-
 const state = {
-  hasActiveBooking: false,
   showModal: false
 };
 
 const getters = {
   showModal: state => state.showModal,
-  hasActiveBooking: state => state.hasActiveBooking,
   bookingIsCancelled: state => state.bookingIsCancelled
 };
 
@@ -17,15 +13,14 @@ const actions = {
       let dateFrom = rootState.dates.from;
       let dateTo = rootState.dates.to;
       rootState.users.map(user => {
+        // user.timePeriod.from - dateFrom <= 172800000
+        // dateTo - user.timePeriod.from <= 172800000
         if (user.email === rootState.userInfo.info.email) {
           user.hasActiveBooking = !user.hasActiveBooking;
           commit('setUser', user);
           user.timePeriod.from = dateFrom;
           user.timePeriod.to = dateTo;
-          console.log(dateTo - dateFrom);
           commit('setDates', user);
-          user.timePeriod.from = dateFrom.toString().match(regexDate)[0];
-          user.timePeriod.to = dateTo.toString().match(regexDate)[0];
           commit('captureUserInfo', user);
           commit('setActiveBooking');
           dispatch('showModal');
@@ -56,8 +51,7 @@ const actions = {
 
 const mutations = {
   setDates: (state, date) => (state = { ...state, date }),
-  setModal: state => (state.showModal = !state.showModal),
-  setActiveBooking: state => (state.hasActiveBooking = !state.hasActiveBooking)
+  setModal: state => (state.showModal = !state.showModal)
 };
 
 export default { state, getters, actions, mutations };

@@ -2,8 +2,8 @@
   <div v-if="hasActiveBooking" :class="showModal ? 'Modal show' : 'Modal'">
     <h4>booking successful!</h4>
     <p>active booking</p>
-    <p>from: {{ userInfo.timePeriod.from }}</p>
-    <p>to: {{ userInfo.timePeriod.to }}</p>
+    <p>from: {{ parseDate(userInfo.timePeriod.from) }}</p>
+    <p>to: {{ parseDate(userInfo.timePeriod.to) }}</p>
   </div>
   <div v-else :class="showModal ? 'Modal show' : 'Modal'">
     <p>your booking has been cancelled</p>
@@ -15,7 +15,12 @@ import { mapGetters } from "vuex";
 
 export default {
   name: "Modal",
-  computed: mapGetters(["userInfo", "showModal", "hasActiveBooking"])
+  computed: mapGetters(["userInfo", "showModal", "hasActiveBooking"]),
+  methods: {
+    parseDate(date) {
+      return date.toString().match(/^[a-z ]+[\d ]{7}/i)[0];
+    }
+  }
 };
 </script>
 

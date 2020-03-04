@@ -5,6 +5,7 @@
     :monday-first="true"
     :highlighted="highlighted"
     :disabled-dates="disabledDates"
+    :open-date="openDate"
     @selected="pickDates"
   />
 </template>
@@ -19,29 +20,36 @@ export default {
   components: {
     datepicker
   },
-  computed: mapGetters(["fromDate", "toDate", "allUsers"]),
+  computed: mapGetters([
+    "fromDate",
+    "toDate",
+    "allUsers",
+    "userInfo",
+    "hasActiveBooking"
+  ]),
   data() {
     return {
       date: new Date(),
       // sv: sv,
+      openDate: new Date(),
       highlighted: { from: "", to: "" },
       disabledDates: { ranges: [] }
     };
   },
   mounted() {
-    if (this.fromDate && this.toDate) {
-      this.highlighted = {
-        from: this.fromDate,
-        to: this.toDate
-      };
-    }
+    this.openDate = this.hasActiveBooking
+      ? this.userInfo.timePeriod.from
+      : new Date();
+    this.highlighted = {
+      from: this.userInfo.timePeriod.from,
+      to: this.userInfo.timePeriod.to
+    };
     this.allUsers.map(user => {
-      if (user.hasActiveBooking) {
+      if (user.hasActiveBooking && user.email !== this.userInfo.email) {
         this.disabledDates.ranges.push({
           from: user.timePeriod.from,
           to: user.timePeriod.to
         });
-        console.log(this.disabledDates.ranges);
       }
     });
   },
@@ -50,10 +58,14 @@ export default {
   },
   watch: {
     fromDate(newDate) {
-      this.highlighted.from = newDate;
+      if (!this.hasActiveBooking) {
+        this.highlighted.from = newDate;
+      }
     },
     toDate(newDate) {
-      this.highlighted.to = newDate;
+      if (!this.hasActiveBooking) {
+        this.highlighted.to = newDate;
+      }
     }
   }
 };
@@ -66,6 +78,6 @@ export default {
   padding: 0;
 }
 .vdp-datepicker > .vdp-datepicker__calendar .disabled {
-  color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.1);
 }
 </style>

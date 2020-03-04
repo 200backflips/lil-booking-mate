@@ -8,7 +8,10 @@ const state = [
   {
     email: 'gitte@test.com',
     password: 'secret',
-    timePeriod: { from: new Date(2020, 10, 2), to: new Date(2020, 10, 8) },
+    timePeriod: {
+      from: new Date(2020, 5, 2),
+      to: new Date(2020, 5, 8)
+    },
     hasActiveBooking: true
   },
   {
@@ -20,13 +23,19 @@ const state = [
   {
     email: 'lasse.christensen@test.com',
     password: 'secret',
-    timePeriod: { from: new Date(2020, 9, 12), to: new Date(2020, 9, 18) },
+    timePeriod: {
+      from: new Date(2020, 4, 12),
+      to: new Date(2020, 4, 18)
+    },
     hasActiveBooking: true
   },
   {
     email: 'mads@test.com',
     password: 'secret',
-    timePeriod: { from: new Date(2020, 2, 23), to: new Date(2020, 2, 29) },
+    timePeriod: {
+      from: new Date(2020, 2, 23),
+      to: new Date(2020, 2, 29)
+    },
     hasActiveBooking: true
   },
   {

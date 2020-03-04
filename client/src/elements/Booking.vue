@@ -1,7 +1,7 @@
 <template>
   <div class="Booking">
     <h4>{{ showCurrentUser ? 'you' : user.email }}</h4>
-    <div class="booking-details">
+    <div>
       <template v-if="user.hasActiveBooking">
         <p>active booking:</p>
         <p>from: {{ parseDate(user.timePeriod.from) }}</p>
@@ -38,7 +38,7 @@ export default {
   background: #2b2b2b;
   font-size: 1.1rem;
 }
-.booking-details p {
+.Booking p {
   padding: 0.5rem;
 }
 .Booking h4 {

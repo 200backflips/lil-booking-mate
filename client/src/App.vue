@@ -57,14 +57,14 @@ body {
 @media screen and (min-width: 500px) {
   .content {
     width: calc(100vw / 1.25);
-    margin: 2.5rem 0 2.5rem 0;
+    max-height: 650px;
     border: 2px solid rgba(255, 255, 255, 0.2);
     box-shadow: 10px 5px 25px rgba(0, 0, 0, 0.2);
   }
 }
-@media screen and (min-width: 680px) {
+@media screen and (min-width: 870px) {
   .content {
-    width: 545px;
+    width: 690px;
   }
 }
 </style>
