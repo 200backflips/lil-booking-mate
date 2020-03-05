@@ -14,10 +14,10 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
 import Button from "../elements/Button";
 import DatePicker from "./DatePicker";
 import Modal from "../elements/Modal";
-import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "BookingForm",
