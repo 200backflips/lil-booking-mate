@@ -27,7 +27,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .Booking {
   display: flex;
   flex-direction: column;
