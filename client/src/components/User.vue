@@ -63,7 +63,8 @@ export default {
   flex-direction: column;
   align-items: center;
   height: 82%;
-  overflow: scroll;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 .User > p {
   margin: 0.5rem;
