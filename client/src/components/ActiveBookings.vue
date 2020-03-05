@@ -32,7 +32,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .ActiveBookings {
   display: flex;
   flex-direction: column;
@@ -41,5 +41,21 @@ export default {
   height: 82%;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
+}
+.Booking {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  margin: 0.5rem;
+  padding: 0.7rem;
+  background: #2b2b2b;
+  font-size: 1.1rem;
+}
+.Booking p {
+  padding: 0.5rem;
+}
+.Booking h4 {
+  padding: 1rem;
 }
 </style>

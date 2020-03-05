@@ -22,13 +22,6 @@ export default {
 
 <style scoped>
 .Home {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex-wrap: nowrap;
   height: 82%;
-  margin: 0 auto;
-  font-size: 1rem;
-  overflow: auto;
 }
 </style>
