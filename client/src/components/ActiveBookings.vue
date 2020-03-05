@@ -39,6 +39,6 @@ export default {
   align-items: center;
   width: 100%;
   height: 82%;
-  overflow: auto;
+  overflow: scroll;
 }
 </style>

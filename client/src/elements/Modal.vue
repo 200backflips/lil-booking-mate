@@ -5,6 +5,9 @@
     <p>from: {{ parseDate(userInfo.timePeriod.from) }}</p>
     <p>to: {{ parseDate(userInfo.timePeriod.to) }}</p>
   </div>
+  <div v-else-if="errorModal" :class="showModal ? 'Modal show' : 'Modal'">
+    <p>the date is too close to another booking</p>
+  </div>
   <div v-else :class="showModal ? 'Modal show' : 'Modal'">
     <p>your booking has been cancelled</p>
   </div>
@@ -15,7 +18,16 @@ import { mapGetters } from "vuex";
 
 export default {
   name: "Modal",
-  computed: mapGetters(["userInfo", "showModal", "hasActiveBooking"]),
+  props: {
+    heading: String,
+    content: String
+  },
+  computed: mapGetters([
+    "showModal",
+    "hasActiveBooking",
+    "errorModal",
+    "userInfo"
+  ]),
   methods: {
     parseDate(date) {
       return date.toString().match(/^[a-z ]+[\d ]{7}/i)[0];
@@ -27,9 +39,10 @@ export default {
 <style scoped>
 .Modal {
   visibility: hidden;
-  opacity: 0;
   position: absolute;
-  top: 30%;
+  top: 20%;
+  /* max-width: 85%; */
+  opacity: 0;
   padding: 1rem;
   background: #3c3c3c;
   border-radius: 10px;

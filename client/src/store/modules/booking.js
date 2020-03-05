@@ -13,8 +13,6 @@ const actions = {
       let dateFrom = rootState.dates.from;
       let dateTo = rootState.dates.to;
       rootState.users.map(user => {
-        // user.timePeriod.from - dateFrom <= 172800000
-        // dateTo - user.timePeriod.from <= 172800000
         if (user.email === rootState.userInfo.info.email) {
           user.hasActiveBooking = !user.hasActiveBooking;
           commit('setUser', user);
@@ -43,9 +41,12 @@ const actions = {
       }
     });
   },
-  showModal({ commit }) {
+  showModal({ commit, rootState }) {
     commit('setModal');
-    setTimeout(() => commit('setModal'), 3000);
+    setTimeout(
+      () => commit('setModal'),
+      rootState.userInfo.hasActiveBooking ? 2500 : 1500
+    );
   }
 };
 
@@ -54,4 +55,9 @@ const mutations = {
   setModal: state => (state.showModal = !state.showModal)
 };
 
-export default { state, getters, actions, mutations };
+export default {
+  state,
+  getters,
+  actions,
+  mutations
+};
