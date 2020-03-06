@@ -18,11 +18,11 @@
       :userInfo="userInfo.password"
       :error="errorMessage"
     />
-    <template v-if="hasActiveBooking">
+    <router-link to="/" v-if="hasActiveBooking">
       <p>active booking</p>
       <p>from: {{ parseDate(userInfo.timePeriod.from) }}</p>
       <p>to: {{ parseDate(userInfo.timePeriod.to) }}</p>
-    </template>
+    </router-link>
     <router-link to="/" v-else>
       <p>you have no dates booked currently</p>
     </router-link>
@@ -73,7 +73,7 @@ export default {
   margin: 0.5rem;
   text-align: center;
   font-size: 1rem;
-  width: 82%;
+  /* width: 82%; */
 }
 .User > a {
   padding: 0.5rem;

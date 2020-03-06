@@ -33,6 +33,7 @@ export default {
   flex-direction: column;
   align-items: center;
   width: 80%;
+  height: 100%;
   margin: 0.5rem;
   padding: 0.7rem;
   background: #2b2b2b;
