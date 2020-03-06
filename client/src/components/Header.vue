@@ -2,23 +2,25 @@
   <div class="Header">
     <h1>lil booking mate</h1>
     <div class="logout-btn">
-      <button @click.prevent="logOut">
+      <button v-if="isLoggedIn" @click.prevent="logOut">
         <router-link to="/">
           <img src="../assets/logout.svg" alt="logout" />
         </router-link>
       </button>
+      <img v-else src="../assets/logout.svg" alt="logout" class="logged-out" />
     </div>
   </div>
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "Header",
   methods: {
     ...mapActions(["logOut"])
-  }
+  },
+  computed: mapGetters(["isLoggedIn"])
 };
 </script>
 
@@ -48,6 +50,10 @@ export default {
 img {
   width: 1.8rem;
   filter: invert(100%);
+}
+
+.logged-out {
+  filter: invert(60%);
 }
 
 @media screen and (min-width: 500px) {

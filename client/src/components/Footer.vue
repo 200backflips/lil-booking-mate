@@ -6,7 +6,6 @@
     <router-link to="/bookings">
       <img src="../assets/newsfeed.svg" alt="booked-dates" />
     </router-link>
-    <img src="../assets/telegram.svg" class="logged-out" alt="message" />
     <router-link to="/user">
       <img src="../assets/user.svg" alt="user" />
     </router-link>
@@ -16,7 +15,6 @@
       <img src="../assets/home.svg" alt="home" />
     </router-link>
     <img src="../assets/newsfeed.svg" class="logged-out" alt="booked-dates" />
-    <img src="../assets/telegram.svg" class="logged-out" alt="message" />
     <img src="../assets/user.svg" class="logged-out" alt="user" />
   </div>
 </template>

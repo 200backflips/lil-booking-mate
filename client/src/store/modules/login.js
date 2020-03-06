@@ -8,7 +8,7 @@ const actions = {
   verifyLogIn({ commit, rootState }) {
     rootState.users.map(user => {
       if (
-        rootState.userInput.email === user.email &&
+        rootState.userInput.email.toLowerCase() === user.email.toLowerCase() &&
         rootState.userInput.password === user.password
       ) {
         commit('captureUserInfo', user);

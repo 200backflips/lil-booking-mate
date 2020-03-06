@@ -1,7 +1,7 @@
 <template>
   <div class="User">
     <img src="../assets/user.svg" alt="user" />
-    <p>click any of the information that you wish to update</p>
+    <p>click on the information that you would like to update</p>
     <DisplayUserInfo
       infoType="email"
       :toggler="changeEmail"
@@ -23,7 +23,9 @@
       <p>from: {{ parseDate(userInfo.timePeriod.from) }}</p>
       <p>to: {{ parseDate(userInfo.timePeriod.to) }}</p>
     </template>
-    <p v-else>you have no dates booked currently</p>
+    <router-link to="/" v-else>
+      <p>you have no dates booked currently</p>
+    </router-link>
   </div>
 </template>
 
@@ -61,6 +63,7 @@ export default {
 .User {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   height: 82%;
   overflow-y: scroll;
@@ -72,9 +75,16 @@ export default {
   font-size: 1rem;
   width: 82%;
 }
+.User > a {
+  padding: 0.5rem;
+  text-align: center;
+  font-size: 1rem;
+  color: #ffffff;
+  text-decoration: none;
+}
 
 img {
-  width: 4rem;
+  width: 5rem;
   filter: invert(100%);
   margin: 1rem;
 }
