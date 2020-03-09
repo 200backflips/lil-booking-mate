@@ -63,17 +63,13 @@ export default {
 .User {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  height: 82%;
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
 }
 .User > p {
+  width: 90%;
   margin: 0.5rem;
   text-align: center;
   font-size: 1rem;
-  /* width: 82%; */
 }
 .User > a {
   padding: 0.5rem;

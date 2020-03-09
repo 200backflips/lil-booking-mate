@@ -41,7 +41,6 @@ export default {
   visibility: hidden;
   position: absolute;
   top: 20%;
-  /* max-width: 85%; */
   opacity: 0;
   padding: 1rem;
   background: #3c3c3c;

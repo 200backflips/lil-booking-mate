@@ -12,9 +12,6 @@
 
 <script>
 import datepicker from "vuejs-datepicker";
-// import moment from "moment";
-// import "moment/locale/sv";
-// import { sv } from "vuejs-datepicker/dist/locale";
 import { mapGetters, mapActions } from "vuex";
 
 export default {
@@ -32,7 +29,6 @@ export default {
   data() {
     return {
       date: new Date(),
-      // sv: sv,
       openDate: new Date(),
       highlighted: { from: "", to: "" },
       disabledDates: { ranges: [] }

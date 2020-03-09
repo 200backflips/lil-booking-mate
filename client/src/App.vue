@@ -1,8 +1,10 @@
 <template>
   <div class="App" id="app">
-    <div class="content">
+    <div class="container">
       <Header />
-      <router-view />
+      <div class="content">
+        <router-view />
+      </div>
       <Footer />
     </div>
   </div>
@@ -29,33 +31,40 @@ export default {
   padding: 0;
   box-sizing: border-box;
 }
-
 html,
 body {
-  font-family: "Roboto", sans-serif;
-  width: 100%;
   height: 100%;
+  width: 100%;
+  font-family: "Roboto", sans-serif;
   font-size: 100%;
   background: #1f1f1f;
+  color: #ffffff;
 }
 
 .App {
   display: flex;
   flex-direction: column;
-  flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
-  width: 100%;
   height: 100%;
-  color: #ffffff;
+  width: 100%;
 }
-.content {
-  width: 100%;
+
+.container {
+  display: flex;
+  flex-direction: column;
   height: 100%;
+  width: 100%;
+}
+
+.content {
+  flex: 10;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 
 @media screen and (min-width: 500px) {
-  .content {
+  .container {
     width: calc(100vw / 1.25);
     max-height: 650px;
     border: 2px solid rgba(255, 255, 255, 0.2);
@@ -63,7 +72,7 @@ body {
   }
 }
 @media screen and (min-width: 870px) {
-  .content {
+  .container {
     width: 690px;
   }
 }

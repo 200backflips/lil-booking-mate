@@ -30,11 +30,11 @@ export default {
 
 <style scoped>
 .Footer {
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
   background: #2f2fff;
-  height: 10%;
 }
 
 img {

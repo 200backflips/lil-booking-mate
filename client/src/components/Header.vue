@@ -26,12 +26,12 @@ export default {
 
 <style scoped>
 .Header {
+  flex: 1;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 8%;
   color: rgba(255, 255, 255, 0.8);
 }
 .Header > h1 {

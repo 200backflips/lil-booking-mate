@@ -20,8 +20,11 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .Home {
-  height: 82%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
 }
 </style>
