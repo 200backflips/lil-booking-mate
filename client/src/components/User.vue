@@ -82,6 +82,6 @@ export default {
 img {
   width: 5rem;
   filter: invert(100%);
-  margin: 1rem;
+  margin: 3rem 1rem 1rem 1rem;
 }
 </style>
