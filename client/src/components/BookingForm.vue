@@ -46,7 +46,7 @@ export default {
   font-size: 1rem;
 }
 .BookingForm > p {
-  margin: 1rem;
+  margin-bottom: 0.8rem;
   text-align: center;
 }
 

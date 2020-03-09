@@ -30,7 +30,7 @@ export default {
 
 <style scoped>
 .Footer {
-  flex: 1;
+  flex: 1.3;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -38,7 +38,7 @@ export default {
 }
 
 img {
-  width: 2rem;
+  width: 2.2rem;
   margin: 0 1.2rem 0 1.2rem;
   filter: invert(100%);
 }
