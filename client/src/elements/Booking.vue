@@ -1,14 +1,12 @@
 <template>
   <div class="Booking">
     <h4>{{ showCurrentUser ? 'you' : user.email }}</h4>
-    <div>
-      <template v-if="user.hasActiveBooking">
-        <p>active booking:</p>
-        <p>from: {{ parseDate(user.timePeriod.from) }}</p>
-        <p>to: {{ parseDate(user.timePeriod.to) }}</p>
-      </template>
-      <p v-else>no active bookings</p>
-    </div>
+    <template v-if="user.hasActiveBooking">
+      <p>active booking:</p>
+      <p>from: {{ parseDate(user.timePeriod.from) }}</p>
+      <p>to: {{ parseDate(user.timePeriod.to) }}</p>
+    </template>
+    <p v-else>no active bookings</p>
   </div>
 </template>
 
