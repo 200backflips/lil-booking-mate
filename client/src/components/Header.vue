@@ -30,11 +30,11 @@ export default {
   justify-content: center;
   align-items: center;
   width: 100%;
-  color: #ffad6b;
+  color: #ffe79a;
 }
 
 h1 {
-  font-size: 2.2rem;
+  font-size: 2rem;
 }
 
 .logout-btn {
