@@ -52,6 +52,6 @@ h3 {
 }
 
 strong {
-  color: #ffbe79;
+  color: #ffb83d;
 }
 </style>

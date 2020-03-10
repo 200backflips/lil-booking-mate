@@ -43,7 +43,7 @@ export default {
   top: 35%;
   opacity: 0;
   padding: 1rem;
-  background: #2f3c67;
+  background: #354575;
   border-radius: 10px;
   box-shadow: 12px 7px 18px rgba(0, 0, 0, 0.2);
   transition: ease-in 1.5s;
