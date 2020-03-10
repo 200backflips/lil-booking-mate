@@ -43,7 +43,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 1rem;
+  font-size: 1.2rem;
 }
 .BookingForm > p {
   margin-bottom: 0.8rem;

@@ -30,7 +30,7 @@ export default {
 
 <style scoped>
 .Footer {
-  flex: 1.3;
+  flex: 1.1;
   display: flex;
   justify-content: center;
   align-items: center;

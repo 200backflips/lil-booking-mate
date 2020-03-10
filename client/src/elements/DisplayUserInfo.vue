@@ -61,9 +61,8 @@ export default {
 }
 
 .text-btn {
-  /* width: 14rem; */
   margin: 0.7rem;
-  padding: 0.8rem;
+  padding: 0.6rem;
   font-size: 1.2rem;
   color: #ffffff;
   background: #3f4d80;
@@ -98,5 +97,6 @@ mark {
   margin-bottom: 2rem;
   font-size: 1.2rem;
   font-style: italic;
+  font-weight: bold;
 }
 </style>

@@ -74,6 +74,7 @@ export default {
   background: #3a487b;
   border: none;
   padding: 0;
+  font-size: 1.1rem;
 }
 .vdp-datepicker > .vdp-datepicker__calendar .disabled {
   color: rgba(255, 255, 255, 0.1);

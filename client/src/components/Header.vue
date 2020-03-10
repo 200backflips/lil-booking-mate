@@ -30,7 +30,6 @@ export default {
   justify-content: center;
   align-items: center;
   width: 100%;
-  color: #ffe79a;
 }
 
 h1 {

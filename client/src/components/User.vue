@@ -19,9 +19,14 @@
       :error="errorMessage"
     />
     <router-link to="/" v-if="hasActiveBooking">
-      <p>active booking</p>
-      <p>from: {{ parseDate(userInfo.timePeriod.from) }}</p>
-      <p>to: {{ parseDate(userInfo.timePeriod.to) }}</p>
+      <p>active booking:</p>
+      <p>
+        <strong>{{ parseDate(userInfo.timePeriod.from) }}</strong>
+      </p>
+      <p>to</p>
+      <p>
+        <strong>{{ parseDate(userInfo.timePeriod.to) }}</strong>
+      </p>
     </router-link>
     <router-link to="/" v-else>
       <p>you have no dates booked currently</p>
@@ -65,13 +70,16 @@ export default {
   flex-direction: column;
   align-items: center;
 }
-.User > p {
+
+p {
   width: 90%;
   margin: 0.5rem;
+  padding: 0.3rem;
   text-align: center;
   font-size: 1rem;
 }
-.User > a {
+
+a {
   padding: 0.5rem;
   text-align: center;
   font-size: 1rem;
@@ -79,9 +87,13 @@ export default {
   text-decoration: none;
 }
 
+strong {
+  color: #f8ab59;
+}
+
 img {
-  width: 4rem;
+  width: 4.5rem;
   filter: invert(100%);
-  margin: 3rem 1rem 1rem 1rem;
+  margin: 2.5rem 0 0.8rem 0;
 }
 </style>

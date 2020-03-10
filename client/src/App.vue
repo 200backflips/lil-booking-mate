@@ -36,7 +36,7 @@ body {
   height: 100%;
   width: 100%;
   font-family: "Roboto", sans-serif;
-  font-size: 100%;
+  font-size: 90%;
   background: #3b4776;
   color: #ffffff;
 }

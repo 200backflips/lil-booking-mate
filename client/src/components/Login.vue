@@ -38,9 +38,11 @@ export default {
   width: 70%;
   text-align: center;
   font-style: italic;
+  font-weight: bold;
+  font-size: 1.2rem;
 }
 
 .main-btn {
-  margin: 2rem;
+  margin: 1rem;
 }
 </style>
