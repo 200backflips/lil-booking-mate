@@ -2,11 +2,9 @@
   <div class="Header">
     <h1>lil booking mate</h1>
     <div class="logout-btn">
-      <button v-if="isLoggedIn" @click.prevent="logOut">
-        <router-link to="/">
-          <img src="../assets/logout.svg" alt="logout" />
-        </router-link>
-      </button>
+      <router-link to="/" v-if="isLoggedIn" @click.native="logOut">
+        <img src="../assets/logout.svg" alt="logout" />
+      </router-link>
       <img v-else src="../assets/logout.svg" alt="logout" class="logged-out" />
     </div>
   </div>
@@ -32,16 +30,17 @@ export default {
   justify-content: center;
   align-items: center;
   width: 100%;
-  color: #ffefe0;
+  color: #ffad6b;
 }
-.Header > h1 {
-  font-size: 1.9rem;
+
+h1 {
+  font-size: 2.2rem;
 }
 
 .logout-btn {
   margin-left: 2rem;
 }
-.logout-btn > button {
+.logout-btn > a {
   border: none;
   background: #3f4d80;
   cursor: pointer;
@@ -56,7 +55,7 @@ img {
   filter: invert(60%);
 }
 
-@media screen and (min-width: 500px) {
+@media screen and (min-width: 670px) {
   img:hover {
     filter: invert(60%);
   }

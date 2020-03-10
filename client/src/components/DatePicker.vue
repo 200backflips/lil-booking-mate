@@ -71,7 +71,7 @@ export default {
 
 <style>
 .vdp-datepicker > .vdp-datepicker__calendar {
-  background: #374474;
+  background: #3a487b;
   border: none;
   padding: 0;
 }

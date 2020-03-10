@@ -64,7 +64,7 @@ body {
   -webkit-overflow-scrolling: touch;
 }
 
-@media screen and (min-width: 500px) {
+@media screen and (min-width: 670px) {
   html,
   body {
     font-size: 90%;

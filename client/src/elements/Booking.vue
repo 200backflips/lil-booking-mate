@@ -1,10 +1,16 @@
 <template>
   <div class="Booking">
-    <h4>{{ showCurrentUser ? 'you' : user.email }}</h4>
+    <h3>{{ showCurrentUser ? 'you' : user.email }}</h3>
     <template v-if="user.hasActiveBooking">
-      <p>active booking:</p>
-      <p>from: {{ parseDate(user.timePeriod.from) }}</p>
-      <p>to: {{ parseDate(user.timePeriod.to) }}</p>
+      <p>active booking</p>
+      <p>
+        from:
+        <strong>{{ parseDate(user.timePeriod.from) }}</strong>
+      </p>
+      <p>
+        to:
+        <strong>{{ parseDate(user.timePeriod.to) }}</strong>
+      </p>
     </template>
     <p v-else>no active bookings</p>
   </div>
@@ -31,16 +37,21 @@ export default {
   flex-direction: column;
   align-items: center;
   width: 85%;
-  max-width: 485px;
   margin: 0.5rem;
   padding: 0.7rem;
-  background: #374474;
+  background: #3a487b;
   font-size: 1.1rem;
 }
-.Booking p {
-  padding: 0.5rem;
+
+p {
+  padding: 0.4rem;
 }
-.Booking h4 {
-  padding: 1rem;
+
+h3 {
+  padding: 0.7rem;
+}
+
+strong {
+  color: #ffbe8c;
 }
 </style>

@@ -43,11 +43,15 @@ img {
   filter: invert(100%);
 }
 
+a {
+  outline: none;
+}
+
 .logged-out {
   filter: invert(70%);
 }
 
-@media screen and (min-width: 500px) {
+@media screen and (min-width: 670px) {
   img:hover {
     filter: invert(70%);
   }
