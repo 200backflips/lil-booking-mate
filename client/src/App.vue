@@ -37,7 +37,7 @@ body {
   width: 100%;
   font-family: "Roboto", sans-serif;
   font-size: 100%;
-  background: #1f1f1f;
+  background: #3b4776;
   color: #ffffff;
 }
 
@@ -55,6 +55,7 @@ body {
   flex-direction: column;
   height: 100%;
   width: 100%;
+  background: #3f4d80;
 }
 
 .content {
@@ -64,11 +65,15 @@ body {
 }
 
 @media screen and (min-width: 500px) {
+  html,
+  body {
+    font-size: 90%;
+  }
   .container {
     width: calc(100vw / 1.25);
     max-height: 650px;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 10px 5px 25px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.15);
   }
 }
 @media screen and (min-width: 870px) {

@@ -26,13 +26,13 @@ export default {
   width: 15rem;
   margin-bottom: 2rem;
   padding: 0.6rem;
-  background: #2b2b2b;
+  background: #374474;
 }
 .form-field > input {
   width: 100%;
   margin-top: 1rem;
   font-size: 1.1rem;
-  background: #2b2b2b;
+  background: #374474;
   color: #ffffff;
   border: none;
   border-bottom: 2px solid rgba(255, 255, 255, 0.4);
@@ -42,7 +42,7 @@ export default {
 .form-field > input:-webkit-autofill:hover,
 .form-field > input:-webkit-autofill:focus {
   -webkit-text-fill-color: #ffffff;
-  box-shadow: 0 0 0 1000px #2b2b2b inset;
+  box-shadow: 0 0 0 1000px #374474 inset;
   font-size: 1.1rem;
 }
 </style>

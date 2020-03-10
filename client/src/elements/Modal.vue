@@ -40,12 +40,12 @@ export default {
 .Modal {
   visibility: hidden;
   position: absolute;
-  top: 20%;
+  top: 35%;
   opacity: 0;
   padding: 1rem;
-  background: #3c3c3c;
+  background: #2c3860;
   border-radius: 10px;
-  box-shadow: 12px 7px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 12px 7px 18px rgba(0, 0, 0, 0.2);
   transition: ease-in 1.5s;
 }
 .Modal > h4 {

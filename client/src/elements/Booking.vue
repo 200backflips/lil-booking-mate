@@ -31,9 +31,10 @@ export default {
   flex-direction: column;
   align-items: center;
   width: 85%;
+  max-width: 485px;
   margin: 0.5rem;
   padding: 0.7rem;
-  background: #2b2b2b;
+  background: #374474;
   font-size: 1.1rem;
 }
 .Booking p {

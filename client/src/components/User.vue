@@ -80,7 +80,7 @@ export default {
 }
 
 img {
-  width: 5rem;
+  width: 4rem;
   filter: invert(100%);
   margin: 3rem 1rem 1rem 1rem;
 }

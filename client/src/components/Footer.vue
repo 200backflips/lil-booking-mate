@@ -34,7 +34,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #2f2fff;
+  background: #ce8365;
 }
 
 img {
@@ -44,16 +44,17 @@ img {
 }
 
 .logged-out {
-  filter: invert(60%);
+  filter: invert(70%);
 }
 
 @media screen and (min-width: 500px) {
   img:hover {
-    filter: invert(60%);
+    filter: invert(70%);
   }
 
   .Footer {
     min-height: 45px;
+    border-radius: 0 0 10px 10px;
   }
 }
 </style>

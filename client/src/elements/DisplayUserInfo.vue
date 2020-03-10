@@ -16,11 +16,13 @@
         <p>{{error}}</p>
       </div>
     </template>
-    <button
-      v-else
-      @click.prevent="toggleUserInfo(infoType)"
-      class="text-btn"
-    >{{infoType}}: {{ infoType === 'password' ? '••••••' : userInfo }}</button>
+    <button v-else @click.prevent="toggleUserInfo(infoType)" class="text-btn">
+      {{infoType}}:
+      <template v-if="infoType === 'password'">
+        <mark>{{userInfo}}</mark>
+      </template>
+      <template v-else>{{userInfo}}</template>
+    </button>
   </div>
 </template>
 
@@ -59,21 +61,27 @@ export default {
 }
 
 .text-btn {
-  width: 14rem;
+  /* width: 14rem; */
   margin: 0.7rem;
   padding: 0.8rem;
   font-size: 1.2rem;
   color: #ffffff;
-  background: #1f1f1f;
+  background: #3f4d80;
   outline: none;
   border: none;
   cursor: pointer;
 }
 
+mark {
+  background: none;
+  color: #ffffff;
+  -webkit-text-security: disc;
+}
+
 .close {
   margin: 0.5rem 0.5rem 0.5rem 14rem;
   width: 1.8rem;
-  background: #1f1f1f;
+  background: #3d4e8a;
   border: none;
   outline: none;
   cursor: pointer;

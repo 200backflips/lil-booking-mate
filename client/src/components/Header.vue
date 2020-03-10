@@ -32,7 +32,7 @@ export default {
   justify-content: center;
   align-items: center;
   width: 100%;
-  color: rgba(255, 255, 255, 0.8);
+  color: #ffefe0;
 }
 .Header > h1 {
   font-size: 1.9rem;
@@ -43,7 +43,7 @@ export default {
 }
 .logout-btn > button {
   border: none;
-  background: #1f1f1f;
+  background: #3f4d80;
   cursor: pointer;
 }
 
