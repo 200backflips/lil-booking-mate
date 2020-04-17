@@ -5,3 +5,8 @@ A web based booking application built with Vue and Vuex. The user is able to boo
 # Website
 
 https://bookingmate.netlify.app/
+
+# Mock Login Credentials
+
+Email: test@test.com
+Password: secret
